@@ -1,0 +1,10 @@
+# Common
+.DS_Store
+Thumbs.db
+*.sublime-*
+node_modules
+*.log
+
+# App
+config/local.*
+dist

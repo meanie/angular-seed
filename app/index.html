@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/">
+  <title ng-bind="pageTitle()"><!-- @echo CFG.APP_TITLE --></title>
+  <meta charset="utf-8">
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="favicon.png">
+  <!-- vendor:css -->
+  <!-- endinject -->
+  <!-- app:css -->
+  <!-- endinject -->
+</head>
+<body lang="en">
+  <div ui-view class="full-height"></div>
+  <!-- vendor:js -->
+  <!-- endinject -->
+  <!-- app:js -->
+  <!-- endinject -->
+  <script>
+    angular.element(document).ready(function() {
+      setTimeout(function() {
+        angular.bootstrap(document.getElementsByTagName('html')[0], ['App']);
+      }, 10);
+    });
+  </script>
+  <!-- @if ENV='prod' -->
+  <script async src='//www.google-analytics.com/analytics.js'></script>
+  <!-- @endif -->
+</body>
+</html>

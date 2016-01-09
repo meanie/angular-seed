@@ -1,0 +1,89 @@
+{
+  "name": "MyApplication",
+  "description": "",
+  "version": "0.0.1",
+  "homepage": "http://my-application.com",
+  "author": {
+    "name": "Your Name",
+    "email": "you@somewhere.com",
+    "url": "http://somewhere.com/"
+  },
+  "contributors": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/my/application"
+  },
+  "bugs": {
+    "url": "https://github.com/my/application/issues"
+  },
+  "keywords": [],
+  "engines": {
+    "node": ">=5.3.0",
+    "npm": ">=3.5.2"
+  },
+  "scripts": {
+    "start": "lite-server --port 8080 --baseDir './dist/dev' --files './dist/dev/**/*'",
+    "pretest": "gulp lint",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-animate": "^1.4.8",
+    "angular-cookies": "^1.4.8",
+    "angular-messages": "^1.4.8",
+    "angular-resource": "^1.4.8",
+    "angular-sanitize": "^1.4.8",
+    "angular-ui-router": "^0.2.15",
+    "meanie-angular-api": "^1.2.1",
+    "meanie-angular-convert": "^1.1.0",
+    "meanie-angular-focus": "^1.1.1",
+    "meanie-angular-http-buffer": "^1.0.1",
+    "meanie-angular-log": "^1.0.1",
+    "meanie-angular-modal": "^1.1.0",
+    "meanie-angular-storage": "^1.0.3",
+    "meanie-angular-url": "^1.0.5",
+    "moment": "^2.11.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.4.8",
+    "babel-polyfill": "^6.3.14",
+    "del": "^2.2.0",
+    "gulp": "gulpjs/gulp#4.0",
+    "gulp-angular-templatecache": "^1.8.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-babel": "^6.1.1",
+    "gulp-cached": "^1.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-csso": "^1.0.1",
+    "gulp-file": "^0.2.0",
+    "gulp-filter": "^3.0.1",
+    "gulp-inject": "^3.0.0",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jscs-stylish": "^1.3.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-ng-annotate": "^1.1.0",
+    "gulp-ng-constant": "^1.1.0",
+    "gulp-preprocess": "^2.0.0",
+    "gulp-remove-empty-lines": "^0.0.2",
+    "gulp-remove-html-comments": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.1",
+    "gulp-wrapper": "^1.0.0",
+    "jasmine-core": "^2.4.1",
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.1.0",
+    "karma": "^0.13.19",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.3",
+    "karma-spec-reporter": "0.0.23",
+    "lite-server": "^1.3.2",
+    "merge-stream": "^1.0.0",
+    "phantomjs": "^1.9.19",
+    "yamljs": "^0.2.4",
+    "yargs": "^3.31.0"
+  }
+}

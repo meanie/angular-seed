@@ -1,0 +1,23 @@
+
+###
+# Production environment configuration
+##
+
+# Application settings
+APP_NAME: '${pkg.name}'
+APP_VERSION: '${pkg.version}'
+APP_TITLE: 'My Application'
+APP_BASE_URL: 'http://my-application.com'
+
+# API settings
+API_VERSION: 1
+API_BASE_URL: 'http://my-application.com/api/v1/'
+API_ENFORCE_DATA_FORMAT: true
+API_VERBOSE: false
+
+# Authentication settings
+AUTH_CLIENT_IDENTIFIER: '${pkg.name}'
+
+# Analytics settings
+ANALYTICS_ENABLED: true
+ANALYTICS_TRACKING_ID: ''

@@ -1,0 +1,16 @@
+
+/**
+ * Load variables and main layout entry point
+ */
+@import 'layout/variables';
+@import 'layout/layout';
+
+/**
+ * Site modules
+ */
+@import 'components/home/home';
+
+/**
+ * Overrides at the end
+ */
+@import 'layout/common/overrides';
