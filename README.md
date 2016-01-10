@@ -1,4 +1,4 @@
-# Angular Seed
+# Angular seed project
 
 [![github release](https://img.shields.io/github/release/meanie/angular-seed.svg)](https://github.com/meanie/angular-seed/releases)
 [![node dependencies](https://david-dm.org/meanie/angular-seed.svg)](https://david-dm.org/meanie/angular-seed)
