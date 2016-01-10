@@ -35,13 +35,13 @@ cd my-project
 
 # Seed a new Angular project
 meanie seed angular
-``` -->
+```
 
 If you don't have the Meanie CLI tool installed, you can install it using:
 
 ```shell
 npm install -g meanie
-```
+```  -->
 
 ## Running the project
 Once installed, you can run the project using:
