@@ -24,7 +24,9 @@
     "npm": ">=3.5.2"
   },
   "scripts": {
-    "start": "lite-server --port 8080 --baseDir './dist/dev' --files './dist/dev/**/*'",
+    "prestart": "gulp build",
+    "start:lite": "lite-server --port 8080 --baseDir './dist/dev' --files './dist/dev/**/*'",
+    "start": "parallelshell \"npm run start:lite\" \"gulp watch\"",
     "pretest": "gulp lint",
     "test": "gulp test"
   },
@@ -77,6 +79,7 @@
     "karma-spec-reporter": "0.0.23",
     "lite-server": "^1.3.2",
     "merge-stream": "^1.0.0",
+    "parallelshell": "^2.0.0",
     "phantomjs": "^1.9.19",
     "yamljs": "^0.2.4",
     "yargs": "^3.31.0"
