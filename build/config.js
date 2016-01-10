@@ -16,7 +16,7 @@ const ROOT_PATH = path.normalize(path.join(__dirname, '..'));
 const CONFIG_PATH = path.join(ROOT_PATH, 'config');
 
 //Source globs
-let ASSETS_SRC = ['assets/**/*'];
+let ASSETS_SRC = ['app/assets/**/*'];
 let CONFIG_SRC = ['config/**/*.yml'];
 let INDEX_HTML_SRC = 'app/index.html';
 let INDEX_CSS_SRC = 'app/index.scss';
