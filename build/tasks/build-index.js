@@ -19,13 +19,13 @@ let config = require('../config');
 const ENV = config.ENV;
 const BUNDLE_JS = config.BUNDLE_JS;
 const BUNDLE_CSS = config.BUNDLE_CSS;
-const INDEX_HTML_SRC = config.INDEX_HTML_SRC;
 const BUILD_DEST = config.BUILD_DEST;
-const APP_DEST = config.APP_DEST;
-const VENDOR_DEST = config.VENDOR_DEST;
+const APP_JS_DEST = config.APP_JS_DEST;
+const LIB_JS_DEST = config.LIB_JS_DEST;
 const APP_CSS_DEST = config.APP_CSS_DEST;
-const VENDOR_CSS_DEST = config.VENDOR_CSS_DEST;
-const VENDOR_SRC = config.VENDOR_SRC;
+const LIB_CSS_DEST = config.LIB_CSS_DEST;
+const LIB_JS_SRC = config.LIB_JS_SRC;
+const INDEX_HTML_SRC = config.INDEX_HTML_SRC;
 
 /**
  * Build index.html file
@@ -34,7 +34,7 @@ module.exports = function buildIndex() {
 
   //Get sources
   let appSources = getAppSources();
-  let vendorSources = getVendorSources();
+  let libSources = getLibSources();
 
   //Get app config
   let appConfig = loadConfig();
@@ -46,10 +46,10 @@ module.exports = function buildIndex() {
       ignorePath: BUILD_DEST,
       name: 'app'
     }))
-    .pipe(injectInHtml(vendorSources, {
+    .pipe(injectInHtml(libSources, {
       addRootSlash: false,
       ignorePath: BUILD_DEST,
-      name: 'vendor'
+      name: 'lib'
     }))
     .pipe(preprocess({
       context: {
@@ -69,32 +69,32 @@ function getAppSources() {
   let appJs = BUNDLE_JS ? packageFilename('.min.js') : '**/*.js';
   let appCss = BUNDLE_CSS ? packageFilename('.min.css') : '**/*.css';
   return gulp.src([
-    APP_DEST + '/' + appJs,
+    APP_JS_DEST + '/' + appJs,
     APP_CSS_DEST + '/' + appCss
   ], {read: false});
 }
 
 /**
- * Get vendor sources
+ * Get lib sources
  */
-function getVendorSources() {
+function getLibSources() {
 
   //Initialize files
   let files = [];
 
-  //Determine vendor JS
+  //Determine lib JS
   if (BUNDLE_JS) {
-    files.push(VENDOR_DEST + packageFilename('vendor', '.min.js'));
+    files.push(LIB_JS_DEST + packageFilename('lib', '.min.js'));
   }
   else {
-    files = VENDOR_SRC.map(function(file) {
-      return VENDOR_DEST + '/' + path.basename(file);
+    files = LIB_JS_SRC.map(function(file) {
+      return LIB_JS_DEST + '/' + path.basename(file);
     });
   }
 
-  //Determine vendor CSS
-  let vendorCss = BUNDLE_CSS ? packageFilename('vendor', '.min.css') : '**/*.css';
-  files.push(VENDOR_CSS_DEST + '/' + vendorCss);
+  //Determine lib CSS
+  let libCss = BUNDLE_CSS ? packageFilename('lib', '.min.css') : '**/*.css';
+  files.push(LIB_CSS_DEST + '/' + libCss);
 
   //Return sources
   return gulp.src(files, {read: false});

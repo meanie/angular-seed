@@ -8,73 +8,74 @@ let argv = require('yargs').argv;
 let pkg = require('../package.json');
 
 //Environment
-let ENV = argv.env || process.env.NODE_ENV || 'dev';
-let VERSION = pkg.version;
+const ENV = argv.env || process.env.NODE_ENV || 'dev';
+const VERSION = pkg.version;
 
 //Paths
-let ROOT_PATH = path.normalize(path.join(__dirname, '..'));
-let CONFIG_PATH = path.join(ROOT_PATH, 'config');
+const ROOT_PATH = path.normalize(path.join(__dirname, '..'));
+const CONFIG_PATH = path.join(ROOT_PATH, 'config');
 
-//Destination directories
-let BUILD_DEST = `dist/${ENV}`;
-let ASSETS_DEST = BUILD_DEST;
-let APP_DEST = `${BUILD_DEST}/bundles`;
-let VENDOR_DEST = `${BUILD_DEST}/bundles`;
-let APP_CSS_DEST = `${BUILD_DEST}/css`;
-let VENDOR_CSS_DEST = `${BUILD_DEST}/css`;
+//Source globs
+let ASSETS_SRC = ['assets/**/*'];
+let CONFIG_SRC = ['config/**/*.yml'];
+let INDEX_HTML_SRC = 'app/index.html';
+let INDEX_CSS_SRC = 'app/index.scss';
 
-//Source globs (JS)
-let APP_SRC = ['app/components/**/*.js'];
-let ASSETS_SRC = ['app/assets/**/*'];
-let CONFIG_SRC = ['config/**/*.js'];
-let TEST_SRC = ['app/components/**/*.spec.js'];
-let TEST_LIB_SRC = ['node_modules/angular-mocks/angular-mocks.js'];
-let VENDOR_SRC = [
-  'node_modules/moment/moment.js',
+//App
+let APP_JS_SRC = ['app/**/*.js'];
+let APP_TEST_SRC = ['app/**/*.spec.js'];
+let APP_HTML_SRC = ['app/**/*.html'];
+let APP_CSS_SRC = ['app/**/*.scss'];
+
+//Libraries
+let LIB_JS_SRC = [
   'node_modules/angular/angular.js',
   'node_modules/angular-animate/angular-animate.js',
   'node_modules/angular-cookies/angular-cookies.js',
   'node_modules/angular-messages/angular-messages.js',
-  'node_modules/angular-mocks/angular-mocks.js',
   'node_modules/angular-resource/angular-resource.js',
   'node_modules/angular-sanitize/angular-sanitize.js',
   'node_modules/angular-ui-router/release/angular-ui-router.js',
+  'node_modules/meanie-angular-analytics/release/meanie-angular-analytics.js',
   'node_modules/meanie-angular-api/release/meanie-angular-api.js',
-  'node_modules/meanie-angular-convert/release/meanie-angular-convert.js',
-  'node_modules/meanie-angular-focus/release/meanie-angular-focus.js',
-  'node_modules/meanie-angular-http-buffer/release/meanie-angular-http-buffer.js',
   'node_modules/meanie-angular-log/release/meanie-angular-log.js',
-  'node_modules/meanie-angular-modal/release/meanie-angular-modal.js',
   'node_modules/meanie-angular-storage/release/meanie-angular-storage.js',
   'node_modules/meanie-angular-url/release/meanie-angular-url.js',
   'node_modules/babel-polyfill/dist/polyfill.js'
 ];
+let LIB_TEST_SRC = [
+  'node_modules/angular-mocks/angular-mocks.js'
+];
+let LIB_CSS_SRC = [];
 
-//Source globs (CSS & HTML)
-let INDEX_HTML_SRC = 'app/index.html';
-let INDEX_CSS_SRC = 'app/index.scss';
-let APP_HTML_SRC = ['app/layout/**/*.html', 'app/components/**/*.html'];
-let APP_CSS_SRC = ['app/**/*.scss'];
-let VENDOR_CSS_SRC = [];
+//Destination folders
+let BUILD_DEST = `dist/${ENV}`;
+let ASSETS_DEST = BUILD_DEST;
+let APP_JS_DEST = `${BUILD_DEST}/app`;
+let LIB_JS_DEST = `${BUILD_DEST}/lib`;
+let APP_CSS_DEST = `${BUILD_DEST}/css`;
+let LIB_CSS_DEST = `${BUILD_DEST}/css`;
 
-//Other build settings
-let BUNDLE_JS = true;
-let BUNDLE_CSS = true;
+//Build settings
+let BUNDLE_JS = false;
+let BUNDLE_CSS = false;
 let AUTOPREFIXER_BROWSERS = ['last 2 versions'];
 let WATCH_DEBOUNCE_DELAY = 250;
 
 /**
- * Dev environment overrides
+ * Prod environment overrides
  */
-if (ENV === 'dev') {
-
-  //Destination paths
-  APP_DEST = BUILD_DEST + '/app';
-  VENDOR_DEST = BUILD_DEST + '/vendor';
+if (ENV === 'prod') {
 
   //Build settings
-  BUNDLE_JS = false;
-  BUNDLE_CSS = false;
+  BUNDLE_JS = true;
+  BUNDLE_CSS = true;
+
+  //Destination paths
+  APP_JS_DEST = `${BUILD_DEST}/bundles`;
+  LIB_JS_DEST = `${BUILD_DEST}/bundles`;
+  APP_CSS_DEST = `${BUILD_DEST}/bundles`;
+  LIB_CSS_DEST = `${BUILD_DEST}/bundles`;
 }
 
 /**
@@ -92,26 +93,26 @@ module.exports = {
 
   //Destination paths
   BUILD_DEST: BUILD_DEST,
-  APP_DEST: APP_DEST,
-  VENDOR_DEST: VENDOR_DEST,
   ASSETS_DEST: ASSETS_DEST,
+  APP_JS_DEST: APP_JS_DEST,
+  LIB_JS_DEST: LIB_JS_DEST,
   APP_CSS_DEST: APP_CSS_DEST,
-  VENDOR_CSS_DEST: VENDOR_CSS_DEST,
+  LIB_CSS_DEST: LIB_CSS_DEST,
 
   //Sources (JS)
-  APP_SRC: APP_SRC,
-  VENDOR_SRC: VENDOR_SRC,
+  APP_JS_SRC: APP_JS_SRC,
+  LIB_JS_SRC: LIB_JS_SRC,
   ASSETS_SRC: ASSETS_SRC,
   CONFIG_SRC: CONFIG_SRC,
-  TEST_SRC: TEST_SRC,
-  TEST_LIB_SRC: TEST_LIB_SRC,
+  APP_TEST_SRC: APP_TEST_SRC,
+  LIB_TEST_SRC: LIB_TEST_SRC,
 
   //Sources (CSS & HTML)
   INDEX_HTML_SRC: INDEX_HTML_SRC,
   APP_HTML_SRC: APP_HTML_SRC,
   INDEX_CSS_SRC: INDEX_CSS_SRC,
   APP_CSS_SRC: APP_CSS_SRC,
-  VENDOR_CSS_SRC: VENDOR_CSS_SRC,
+  LIB_CSS_SRC: LIB_CSS_SRC,
 
   //Other build settings
   BUNDLE_JS: BUNDLE_JS,

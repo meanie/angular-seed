@@ -13,30 +13,30 @@ let config = require('../config');
 /**
  * Configuration
  */
-const VENDOR_CSS_SRC = config.VENDOR_CSS_SRC;
-const VENDOR_CSS_DEST = config.VENDOR_CSS_DEST;
+const LIB_CSS_SRC = config.LIB_CSS_SRC;
+const LIB_CSS_DEST = config.LIB_CSS_DEST;
 const BUNDLE_CSS = config.BUNDLE_CSS;
 
 /**
- * Process vendor CSS files
+ * Process lib CSS files
  */
-module.exports = function buildVendorCss(done) {
+module.exports = function buildLibCss(done) {
 
   //No CSS?
-  if (emptySrc(VENDOR_CSS_SRC)) {
+  if (emptySrc(LIB_CSS_SRC)) {
     return done();
   }
 
   //Get stream
-  let stream = gulp.src(VENDOR_CSS_SRC);
+  let stream = gulp.src(LIB_CSS_SRC);
 
   //Bundling?
   if (BUNDLE_CSS) {
     stream = stream
-      .pipe(concat(packageFilename('vendor', '.min.css')))
+      .pipe(concat(packageFilename('lib', '.min.css')))
       .pipe(csso());
   }
 
   //Write to destination
-  return stream.pipe(gulp.dest(VENDOR_CSS_DEST));
+  return stream.pipe(gulp.dest(LIB_CSS_DEST));
 };

@@ -36,15 +36,10 @@
     "angular-resource": "^1.4.8",
     "angular-sanitize": "^1.4.8",
     "angular-ui-router": "^0.2.15",
-    "meanie-angular-api": "^1.2.1",
-    "meanie-angular-convert": "^1.1.0",
-    "meanie-angular-focus": "^1.1.1",
-    "meanie-angular-http-buffer": "^1.0.1",
+    "meanie-angular-analytics": "^1.0.2",
+    "meanie-angular-api": "^1.2.2",
     "meanie-angular-log": "^1.0.1",
-    "meanie-angular-modal": "^1.1.0",
-    "meanie-angular-storage": "^1.0.3",
-    "meanie-angular-url": "^1.0.5",
-    "moment": "^2.11.0"
+    "meanie-angular-storage": "^1.0.3"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.8",

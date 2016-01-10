@@ -4,20 +4,20 @@
  * Dependencies
  */
 let gulp = require('gulp');
-let buildVendorJs = require('./build-vendor-js');
+let buildLibJs = require('./build-lib-js');
 let config = require('../config');
 
 /**
  * Configuration
  */
-const VENDOR_SRC = config.APP_SRC;
+const LIB_JS_SRC = config.APP_JS_SRC;
 const WATCH_DEBOUNCE_DELAY = config.WATCH_DEBOUNCE_DELAY;
 
 /**
  * Export task
  */
-module.exports = function watchVendorJs() {
-  gulp.watch(VENDOR_SRC, {
+module.exports = function watchLibJs() {
+  gulp.watch(LIB_JS_SRC, {
     debounceDelay: WATCH_DEBOUNCE_DELAY
-  }, gulp.series(buildVendorJs));
+  }, gulp.series(buildLibJs));
 };

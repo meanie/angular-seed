@@ -22,8 +22,8 @@ let config = require('../config');
 /**
  * Configuration
  */
-const APP_SRC = config.APP_SRC;
-const APP_DEST = config.APP_DEST;
+const APP_JS_SRC = config.APP_JS_SRC;
+const APP_JS_DEST = config.APP_JS_DEST;
 const BUNDLE_JS = config.BUNDLE_JS;
 
 /**
@@ -33,7 +33,7 @@ module.exports = function buildAppJs() {
 
   //Create stream
   let stream = merge(
-    gulp.src(APP_SRC.concat([
+    gulp.src(APP_JS_SRC.concat([
       '!**/*.spec.js'
     ])),
     configModuleStream(),
@@ -69,5 +69,5 @@ module.exports = function buildAppJs() {
   }
 
   //Write to destination folder and return
-  return stream.pipe(gulp.dest(APP_DEST));
+  return stream.pipe(gulp.dest(APP_JS_DEST));
 };

@@ -1,0 +1,73 @@
+
+/**
+ * Headings
+ */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: $fontWeightNormal;
+}
+section {
+	h1 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+	}
+}
+
+/**
+ * Paragraphs
+ */
+p {
+	font-size: $fontSizeNormal;
+	line-height: $lineHeight;
+	margin-bottom: $marginParagraph;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+/**
+ * Lists
+ */
+ul, ol {
+	margin: 0 0 $marginParagraph 1.75rem;
+	line-height: $lineHeight;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+/**
+ * Links
+ */
+a {
+	color: $colorTextLink;
+	text-decoration: none;
+	cursor: pointer;
+	&:hover {
+		text-decoration: underline;
+	}
+	&:hover, &:active {
+		outline: none;
+	}
+}
+
+/**
+ * Text styles
+ */
+strong, .bold {
+	font-weight: $fontWeightExtraBold;
+}
+em, .italic {
+	font-style: $fontStyleItalic;
+}
+small, .small {
+	font-size: $fontSizeSmall;
+}
+.text-center {
+	text-align: center;
+}
+.text-left {
+	text-align: left;
+}
+.text-right {
+	text-align: right;
+}

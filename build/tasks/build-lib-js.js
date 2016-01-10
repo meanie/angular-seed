@@ -13,27 +13,27 @@ let config = require('../config');
 /**
  * Configuration
  */
-const VENDOR_SRC = config.VENDOR_SRC;
-const VENDOR_DEST = config.VENDOR_DEST;
+const LIB_JS_SRC = config.LIB_JS_SRC;
+const LIB_JS_DEST = config.LIB_JS_DEST;
 const BUNDLE_JS = config.BUNDLE_JS;
 
 /**
- * Build vendor javascript files
+ * Build lib javascript files
  */
-module.exports = function buildVendorJs() {
+module.exports = function buildLibJs() {
 
   //Create stream
-  let stream = gulp.src(VENDOR_SRC);
+  let stream = gulp.src(LIB_JS_SRC);
 
   //Bundling?
   if (BUNDLE_JS) {
     stream = stream
       .pipe(sourcemaps.init())
-        .pipe(concat(packageFilename('vendor', '.min.js')))
+        .pipe(concat(packageFilename('lib', '.min.js')))
         .pipe(uglify())
       .pipe(sourcemaps.write('./'));
   }
 
   //Write to public folder and return
-  return stream.pipe(gulp.dest(VENDOR_DEST));
+  return stream.pipe(gulp.dest(LIB_JS_DEST));
 };

@@ -4,20 +4,20 @@
  * Dependencies
  */
 let gulp = require('gulp');
-let copyAssets = require('./copy-assets');
+let buildLibCss = require('./build-lib-css');
 let config = require('../config');
 
 /**
  * Configuration
  */
-const ASSETS_SRC = config.APP_SRC;
+const LIB_CSS_SRC = config.LIB_CSS_SRC;
 const WATCH_DEBOUNCE_DELAY = config.WATCH_DEBOUNCE_DELAY;
 
 /**
  * Export task
  */
-module.exports = function watchAssets() {
-  gulp.watch(ASSETS_SRC, {
+module.exports = function watchLibCss() {
+  gulp.watch(LIB_CSS_SRC, {
     debounceDelay: WATCH_DEBOUNCE_DELAY
-  }, gulp.series(copyAssets));
+  }, gulp.series(buildLibCss));
 };

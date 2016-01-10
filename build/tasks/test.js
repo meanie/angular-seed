@@ -11,10 +11,10 @@ let config = require('../config');
  * Configuration
  */
 const ROOT_PATH = config.ROOT_PATH;
-const VENDOR_SRC = config.VENDOR_SRC;
-const TEST_LIB_SRC = config.TEST_LIB_SRC;
-const APP_SRC = config.APP_SRC;
-const TEST_SRC = config.TEST_SRC;
+const LIB_JS_SRC = config.LIB_JS_SRC;
+const LIB_TEST_SRC = config.LIB_TEST_SRC;
+const APP_JS_SRC = config.APP_JS_SRC;
+const APP_TEST_SRC = config.APP_TEST_SRC;
 
 /**
  * Run tests
@@ -23,10 +23,10 @@ module.exports = function test(done) {
 
   //Get files for testing
   let files = [].concat(
-    VENDOR_SRC,
-    TEST_LIB_SRC,
-    APP_SRC,
-    TEST_SRC
+    LIB_JS_SRC,
+    LIB_TEST_SRC,
+    APP_JS_SRC,
+    APP_TEST_SRC
   );
 
   //Run karma server

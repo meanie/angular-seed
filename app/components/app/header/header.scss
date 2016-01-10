@@ -1,0 +1,48 @@
+
+/**
+ * Variables
+ */
+$headerHeight: 5rem;
+$navHeight: $headerHeight;
+$menuButtonPadding: 1.5rem;
+
+/**
+ * App header
+ */
+.app-header {
+	height: $headerHeight;
+	background: $colorPrimary;
+
+	/**
+	 * Navigation
+	 */
+	nav {
+		height: $navHeight;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin: 0 (-1 * $menuButtonPadding);
+		.menu {
+			height: 100%;
+			font-size: 0;
+			> li {
+				height: 100%;
+				display: inline-block;
+				list-style:	none;
+				> a {
+					height: 100%;
+					line-height: $navHeight;
+					padding: 0 $menuButtonPadding;
+					display: block;
+					font-size: $fontSizeNormal;
+					cursor: pointer;
+					color: $colorWhite;
+					&:hover {
+						text-decoration: none;
+						background: fade-out($colorBlack, .9);
+					}
+				}
+			}
+		}
+	}
+}

@@ -13,9 +13,8 @@ let config = require('../config');
 /**
  * Configuration
  */
-const CONFIG_SRC = config.CONFIG_SRC;
-const APP_SRC = config.APP_SRC;
-const TEST_SRC = config.TEST_SRC;
+const APP_JS_SRC = config.APP_JS_SRC;
+const APP_TEST_SRC = config.APP_TEST_SRC;
 
 /**
  * Lint code
@@ -24,9 +23,8 @@ module.exports = function lint() {
 
   //Files for testing
   let files = ['build/**/*.js'].concat(
-    CONFIG_SRC,
-    APP_SRC,
-    TEST_SRC
+    APP_JS_SRC,
+    APP_TEST_SRC
   );
 
   return gulp.src(files)

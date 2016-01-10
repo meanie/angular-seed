@@ -1,0 +1,17 @@
+
+/**
+ * Variables
+ */
+$heightFooter: 4rem;
+
+/**
+ * App footer
+ */
+.app-footer {
+  height: $heightFooter;
+  padding: $marginParagraph;
+  p {
+    color: $colorTextMuted;
+    font-size: $fontSizeSmaller;
+  }
+}
