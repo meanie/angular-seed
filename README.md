@@ -1,6 +1,6 @@
 # Angular Seed
 
-[![npm version](https://img.shields.io/npm/v/meanie-boilerplate.svg)](https://www.npmjs.com/package/meanie-boilerplate)
+[![github release](https://img.shields.io/github/release/meanie/angular-seed.svg)](https://github.com/meanie/angular-seed/releases)
 [![node dependencies](https://david-dm.org/meanie/angular-seed.svg)](https://david-dm.org/meanie/angular-seed)
 [![github issues](https://img.shields.io/github/issues/meanie/angular-seed.svg)](https://github.com/meanie/angular-seed/issues)
 [![codacy](https://img.shields.io/codacy/e7834f33fcb24ee9a390a3872794d078.svg)](https://www.codacy.com/app/meanie/angular-seed)
@@ -53,7 +53,7 @@ This will build the app, launch lite-server and watch for file changes and rebui
 
 ## Folder structure
 
-The following is an outline of the folder structure of the Meanie boilerplate:
+The following is an outline of the folder structure of this seed project:
 
 ```shell
 # This is where your client side Angular application resides.
