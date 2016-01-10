@@ -27,14 +27,15 @@ npm install
 ```
 
 ### Using the Meanie CLI
-```shell
+This feature will be available shortly.
+<!-- ```shell
 # Create empty project directory
 mkdir my-project
 cd my-project
 
 # Seed a new Angular project
 meanie seed angular
-```
+``` -->
 
 If you don't have the Meanie CLI tool installed, you can install it using:
 
