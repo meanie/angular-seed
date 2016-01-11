@@ -58,14 +58,14 @@ module.exports = function buildAppJs() {
 
   //Minify
   if (BUNDLE_JS) {
-    let mapFilter = filter(['!*.map']);
+    let mapFilter = filter(['!*.map'], {restore: true});
     stream = stream
       .pipe(concat(packageFilename('.min.js')))
       .pipe(uglify())
       .pipe(sourcemaps.write('./'))
       .pipe(mapFilter)
       .pipe(wrapper(bannerWrapper()))
-      .pipe(mapFilter.restore());
+      .pipe(mapFilter.restore);
   }
 
   //Write to destination folder and return

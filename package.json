@@ -1,22 +1,22 @@
 {
-  "name": "MyApplication",
-  "description": "",
+  "name": "MeanieExpressSeed",
+  "description": "Seed project for Angular applications",
   "version": "1.0.0",
-  "homepage": "http://my-application.com",
+  "homepage": "https://github.com/meanie/angular-seed",
   "author": {
-    "name": "Your Name",
-    "email": "you@somewhere.com",
-    "url": "http://somewhere.com/"
+    "name": "Adam Buczynski",
+    "email": "me@adambuczynski.com",
+    "url": "http://adambuczynski.com/"
   },
   "contributors": [],
   "license": "SEE LICENSE IN LICENSE.md",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/my/application"
+    "url": "https://github.com/meanie/angular-seed"
   },
   "bugs": {
-    "url": "https://github.com/my/application/issues"
+    "url": "https://github.com/meanie/angular-seed/issues"
   },
   "keywords": [],
   "engines": {
@@ -24,18 +24,23 @@
     "npm": ">=3.5.2"
   },
   "scripts": {
-    "prestart": "gulp build",
-    "start:lite": "lite-server --port 8080 --baseDir './dist/dev' --files './dist/dev/**/*'",
-    "start": "parallelshell \"npm run start:lite\" \"gulp watch\"",
-    "pretest": "gulp lint",
-    "test": "gulp test"
+    "reinstall": "rimraf node_modules && npm cache clean && npm install",
+    "build": "gulp build --env dev",
+    "build:prod": "gulp build --env prod",
+    "serve": "lite-server --port 8080 --baseDir './dist/dev' --files './dist/dev/**/*'",
+    "serve:prod": "lite-server --port 8080 --baseDir './dist/prod' --files './dist/prod/**/*'",
+    "prestart": "npm run build",
+    "start": "parallelshell \"npm run serve\" \"npm run watch\"",
+    "lint": "gulp lint",
+    "pretest": "npm run lint",
+    "test": "gulp test",
+    "watch": "gulp watch"
   },
   "dependencies": {
     "angular": "^1.4.8",
     "angular-animate": "^1.4.8",
     "angular-cookies": "^1.4.8",
     "angular-messages": "^1.4.8",
-    "angular-resource": "^1.4.8",
     "angular-sanitize": "^1.4.8",
     "angular-ui-router": "^0.2.15",
     "meanie-angular-analytics": "^1.0.2",
@@ -83,6 +88,7 @@
     "merge-stream": "^1.0.0",
     "parallelshell": "^2.0.0",
     "phantomjs": "^1.9.19",
+    "rimraf": "^2.5.0",
     "yamljs": "^0.2.4",
     "yargs": "^3.31.0"
   }

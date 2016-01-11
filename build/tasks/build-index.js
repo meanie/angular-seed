@@ -11,6 +11,7 @@ let removeEmptyLines = require('gulp-remove-empty-lines');
 let removeHtmlComments = require('gulp-remove-html-comments');
 let packageFilename = require('../utils/package-filename');
 let loadConfig = require('../utils/load-config');
+let emptySrc = require('../utils/empty-src');
 let config = require('../config');
 
 /**
@@ -25,6 +26,7 @@ const LIB_JS_DEST = config.LIB_JS_DEST;
 const APP_CSS_DEST = config.APP_CSS_DEST;
 const LIB_CSS_DEST = config.LIB_CSS_DEST;
 const LIB_JS_SRC = config.LIB_JS_SRC;
+const LIB_CSS_SRC = config.LIB_CSS_SRC;
 const INDEX_HTML_SRC = config.INDEX_HTML_SRC;
 
 /**
@@ -84,7 +86,7 @@ function getLibSources() {
 
   //Determine lib JS
   if (BUNDLE_JS) {
-    files.push(LIB_JS_DEST + packageFilename('lib', '.min.js'));
+    files.push(LIB_JS_DEST + '/' + packageFilename('lib', '.min.js'));
   }
   else {
     files = LIB_JS_SRC.map(function(file) {
@@ -93,8 +95,10 @@ function getLibSources() {
   }
 
   //Determine lib CSS
-  let libCss = BUNDLE_CSS ? packageFilename('lib', '.min.css') : '**/*.css';
-  files.push(LIB_CSS_DEST + '/' + libCss);
+  if (!emptySrc(LIB_CSS_SRC)) {
+    let libCss = BUNDLE_CSS ? packageFilename('lib', '.min.css') : '**/*.css';
+    files.push(LIB_CSS_DEST + '/' + libCss);
+  }
 
   //Return sources
   return gulp.src(files, {read: false});
