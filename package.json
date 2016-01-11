@@ -1,7 +1,7 @@
 {
   "name": "MeanieExpressSeed",
   "description": "Seed project for Angular applications",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/meanie/angular-seed",
   "author": {
     "name": "Adam Buczynski",
