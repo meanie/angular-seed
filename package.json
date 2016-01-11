@@ -41,7 +41,8 @@
     "meanie-angular-analytics": "^1.0.2",
     "meanie-angular-api": "^1.2.2",
     "meanie-angular-log": "^1.0.1",
-    "meanie-angular-storage": "^1.0.3"
+    "meanie-angular-storage": "^1.0.3",
+    "meanie-angular-url": "^1.1.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.8",
