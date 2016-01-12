@@ -33,6 +33,7 @@ module.exports = function test(done) {
   new karma.Server({
     configFile: path.join(ROOT_PATH, 'karma.conf.js'),
     singleRun: true,
+    failOnEmptyTestSuite: false,
     files: files
   }, done).start();
 };
