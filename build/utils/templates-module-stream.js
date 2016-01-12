@@ -20,9 +20,6 @@ module.exports = function templatesModuleStream() {
   return gulp.src(APP_HTML_SRC)
     .pipe(angularTemplateCache({
       module: angularModuleName('Templates'),
-      standalone: true,
-      transformUrl: function(url) {
-        return url.replace('components/', '');
-      }
+      standalone: true
     }));
 };

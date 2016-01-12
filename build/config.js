@@ -24,8 +24,8 @@ let INDEX_CSS_SRC = 'app/index.scss';
 //App
 let APP_JS_SRC = ['app/**/*.js'];
 let APP_TEST_SRC = ['app/**/*.spec.js'];
-let APP_HTML_SRC = ['app/**/*.html'];
-let APP_CSS_SRC = ['app/**/*.scss'];
+let APP_HTML_SRC = ['app/components/**/*.html'];
+let APP_CSS_SRC = ['app/components/**/*.scss'];
 
 //Libraries
 let LIB_JS_SRC = [
