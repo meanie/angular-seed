@@ -17,12 +17,6 @@ The build process for this seed project is powered by the Gulp 4 task runner.
 ## Installation
 You can install this seed project either by manually cloning the repository, or by using the [Meanie CLI](https://www.npmjs.com/package/meanie), which will make the process a bit easier.
 
-If you don't have the Meanie CLI tool installed, you can get it using:
-
-```shell
-npm install -g meanie
-```
-
 ### Using the Meanie CLI
 ```shell
 # Seed a new Angular project in the current directory
@@ -30,6 +24,12 @@ meanie seed angular
 
 # Seed a new Angular project in the specified directory
 meanie seed angular my-project
+```
+
+If you don't have the Meanie CLI tool installed, you can get it using:
+
+```shell
+npm install -g meanie
 ```
 
 ### Cloning from github
@@ -101,79 +101,68 @@ The following is an outline of the folder structure of this seed project:
 └─ dist
 ```
 
-## Gulp tasks
+## Automated tasks
 
-Meanie comes with fully configured [Gulp](http://gulpjs.com/) tasks for all common development and build tasks.
+Meanie comes with a full set of automated tasks using npm scripts powered by [Gulp](http://gulpjs.com/) tasks.
 
-*Note*: The gulpfile for Meanie has been configured for use with Gulp version 4. This version is not officially released yet, but you can install and use the alpha version by following  [these instructions](http://demisx.github.io/gulp4/2015/01/15/install-gulp4.html).
+*Note*: Meanie uses Gulp version 4. This version is not officially released yet, but you can install and use this version now by following [these instructions](http://demisx.github.io/gulp4/2015/01/15/install-gulp4.html).
 
 ### Default
-
-The default task, which you can run by simply typing `gulp` is to run the three main tasks, build, watch and start. This is perfect for ongoing development.
+The default build task can be used to lint, test, build, serve and watch your code. This is the main task you'll need for ongoing development:
 ```shell
-$ gulp
-```
-You can also run these tasks individually if needed.
-
-### Build
-
-Build the application and populate the public folder with compiled javascript, stylesheets and static assets. The build task also lints your files and runs your tests prior to building.
-```shell
-$ gulp build
+npm start
 ```
 
-### Watch
+You can also run all of the individual tasks separately.
 
-Watch your files for changes and runs linters, unit tests and recompiles the application files as needed.
+### Linting
+Lint your code by running:
 ```shell
-$ gulp watch
-```
-The watch task also comes with livereload, which gets triggered every time the index file is rebuilt. To use it, simply install the [Chrome livereload plugin](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en).
-
-### Start
-
-Starts the Node server using [Nodemon](http://nodemon.io/).
-```shell
-$ gulp start
+npm run lint
 ```
 
 ### Testing
+Lint your code and run your tests afterwards:
 ```shell
-$ npm test
+npm test
+```
+
+### Build
+Build the application and populate the `dist` folder with compiled javascript, stylesheets and static assets:
+```shell
+npm run build
+```
+
+The default build tasks builds your project for the `dev` environment. To build for the `prod` environment, use:
+```shell
+npm run build:prod
+```
+
+### Watch
+Watch your files for changes and run lint, test and build tasks as needed:
+```shell
+npm run watch
 ```
 
 ### Versioning
-
 Use `npm version` to bump the version numbers in your package file, as well as commit the bump to the repository and tag it with the new version. This process uses [semantic versioning](https://github.com/npm/node-semver).
 
 ```shell
 # Bump the patch version (0.1.0 -> 0.1.1)
-$ npm version patch
+npm version patch
 
 # Bump the minor version (0.1.0 -> 0.2.0)
-$ npm version minor
+npm version minor
 
 # Bump the major version (0.1.0 -> 1.0.0)
-$ npm version major
-```
-
-### Helpers
-
-Some of the helper tasks have also been exposed to the CLI:
-
-```shell
-# Cleans the public folder
-$ gulp clean
-
-# Copy all static assets to the public folder
-$ gulp static
+npm version major
 ```
 
 ## FAQ
 
 #### Why can't I install this seed project with npm?
 
-Unfortunately, npm currently doesn't support moving package code outside of the `node_modules` folder. Since this is a seed project, and as such it has to reside in your project folder and not in `node_modules`, the seed project can only be installed by cloning the git repository or using the [Meanie CLI tool](https://github.com/meanie/meanie).
+Unfortunately, npm currently doesn't support moving package code outside of the `node_modules` folder. Since this is a seed project, and as such it has to reside in your project folder and not in `node_modules`, the seed project can only be installed by cloning the git repository or using the [Meanie CLI tool](https://github.com/meanie/meanie), as described above.
 
 #### What if I want to use this seed project with a different server architecture?
 
