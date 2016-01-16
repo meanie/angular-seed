@@ -16,6 +16,7 @@ angular.module('App.Home.Component', [
     parent: 'app',
     url: '/',
     controller: 'HomeCtrl',
+    controllerAs: 'home',
     templateUrl: 'home/home.html'
   });
 });
