@@ -10,7 +10,7 @@ let config = require('../config');
 /**
  * Configuration
  */
-const LIB_JS_SRC = config.APP_JS_SRC;
+const LIB_JS_SRC = config.LIB_JS_SRC;
 const WATCH_DEBOUNCE_DELAY = config.WATCH_DEBOUNCE_DELAY;
 
 /**

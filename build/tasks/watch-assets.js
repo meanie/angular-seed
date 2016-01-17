@@ -10,7 +10,7 @@ let config = require('../config');
 /**
  * Configuration
  */
-const ASSETS_SRC = config.APP_JS_SRC;
+const ASSETS_SRC = config.ASSETS_SRC;
 const WATCH_DEBOUNCE_DELAY = config.WATCH_DEBOUNCE_DELAY;
 
 /**
