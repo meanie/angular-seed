@@ -50,6 +50,13 @@ button, input, select, textarea {
 }
 
 /**
+ * Remove outline from focussable elements
+ */
+[tabindex="-1"]:focus {
+  outline: none !important;
+}
+
+/**
  * Common
  */
 @import 'common/utility';

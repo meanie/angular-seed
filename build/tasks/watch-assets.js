@@ -4,6 +4,7 @@
  * Dependencies
  */
 let gulp = require('gulp');
+let debounce = require('debounce');
 let copyAssets = require('./copy-assets');
 let config = require('../config');
 
@@ -17,7 +18,5 @@ const WATCH_DEBOUNCE_DELAY = config.WATCH_DEBOUNCE_DELAY;
  * Export task
  */
 module.exports = function watchAssets() {
-  gulp.watch(ASSETS_SRC, {
-    debounceDelay: WATCH_DEBOUNCE_DELAY
-  }, gulp.series(copyAssets));
+  gulp.watch(ASSETS_SRC, debounce(copyAssets, WATCH_DEBOUNCE_DELAY));
 };

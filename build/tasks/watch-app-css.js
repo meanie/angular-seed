@@ -4,6 +4,7 @@
  * Dependencies
  */
 let gulp = require('gulp');
+let debounce = require('debounce');
 let buildAppCss = require('./build-app-css');
 let config = require('../config');
 
@@ -20,7 +21,5 @@ const WATCH_DEBOUNCE_DELAY = config.WATCH_DEBOUNCE_DELAY;
 module.exports = function watchAppCss() {
   let files = APP_CSS_SRC;
   files.push(INDEX_CSS_SRC);
-  gulp.watch(files, {
-    debounceDelay: WATCH_DEBOUNCE_DELAY
-  }, gulp.series(buildAppCss));
+  gulp.watch(files, debounce(buildAppCss, WATCH_DEBOUNCE_DELAY));
 };
