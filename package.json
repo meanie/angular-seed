@@ -38,20 +38,20 @@
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
-    "angular": "^1.4.8",
-    "angular-animate": "^1.4.8",
-    "angular-cookies": "^1.4.8",
-    "angular-messages": "^1.4.8",
-    "angular-sanitize": "^1.4.8",
-    "angular-ui-router": "^0.2.15",
+    "angular": "^1.4.9",
+    "angular-animate": "^1.4.9",
+    "angular-cookies": "^1.4.9",
+    "angular-messages": "^1.4.9",
+    "angular-sanitize": "^1.4.9",
+    "angular-ui-router": "^0.2.17",
     "meanie-angular-analytics": "^1.0.2",
     "meanie-angular-api": "^1.2.2",
-    "meanie-angular-log": "^1.0.1",
-    "meanie-angular-storage": "^1.0.3",
+    "meanie-angular-log": "^1.1.0",
+    "meanie-angular-storage": "^1.1.2",
     "meanie-angular-url": "^1.1.0"
   },
   "devDependencies": {
-    "angular-mocks": "^1.4.8",
+    "angular-mocks": "^1.4.9",
     "babel-polyfill": "^6.3.14",
     "chalk": "^1.1.1",
     "debounce": "^1.0.0",
@@ -80,18 +80,18 @@
     "gulp-uglify": "^1.5.1",
     "gulp-wrapper": "^1.0.0",
     "jasmine-core": "^2.4.1",
-    "jshint": "^2.8.0",
+    "jshint": "^2.9.1",
     "jshint-stylish": "^2.1.0",
     "karma": "^0.13.19",
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.3",
     "karma-spec-reporter": "0.0.23",
-    "lite-server": "^1.3.2",
+    "lite-server": "^1.3.4",
     "merge-stream": "^1.0.0",
     "parallelshell": "^2.0.0",
     "phantomjs": "^1.9.19",
-    "rimraf": "^2.5.0",
+    "rimraf": "^2.5.1",
     "yamljs": "^0.2.4",
-    "yargs": "^3.31.0"
+    "yargs": "^3.32.0"
   }
 }
