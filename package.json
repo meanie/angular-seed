@@ -27,8 +27,8 @@
     "reinstall": "rimraf node_modules && npm cache clean && npm install",
     "build": "gulp build --env dev",
     "build:prod": "gulp build --env prod",
-    "serve": "lite-server --port 8080 --baseDir ./dist/dev --files ./dist/dev/index.html",
-    "serve:prod": "lite-server --port 8080 --baseDir ./dist/prod --files ./dist/prod/index.html",
+    "serve": "node build/serve.js --env dev",
+    "serve:prod": "node build/serve.js --env prod",
     "prestart": "npm run build",
     "start": "parallelshell \"npm run serve\" \"npm run watch\"",
     "lint": "gulp lint",
@@ -53,7 +53,9 @@
   "devDependencies": {
     "angular-mocks": "^1.4.9",
     "babel-polyfill": "^6.3.14",
+    "browser-sync": "^2.11.1",
     "chalk": "^1.1.1",
+    "connect-logger": "0.0.1",
     "debounce": "^1.0.0",
     "del": "^2.2.0",
     "gulp": "gulpjs/gulp#4.0",
@@ -86,11 +88,11 @@
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.3",
     "karma-spec-reporter": "0.0.23",
-    "lite-server": "^1.3.4",
     "merge-stream": "^1.0.0",
     "parallelshell": "^2.0.0",
     "phantomjs": "^1.9.19",
     "rimraf": "^2.5.1",
+    "serve-static": "^1.10.2",
     "yamljs": "^0.2.4",
     "yargs": "^3.32.0"
   }
