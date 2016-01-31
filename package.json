@@ -31,6 +31,7 @@
     "serve:prod": "node build/serve.js --env prod",
     "prestart": "npm run build",
     "start": "parallelshell \"npm run serve\" \"npm run watch\"",
+    "dev": "npm start",
     "lint": "gulp lint",
     "pretest": "npm run lint",
     "test": "gulp test",
