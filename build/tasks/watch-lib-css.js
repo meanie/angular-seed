@@ -18,5 +18,7 @@ const WATCH_DEBOUNCE_DELAY = config.WATCH_DEBOUNCE_DELAY;
  * Export task
  */
 module.exports = function watchLibCss() {
-  gulp.watch(LIB_CSS_SRC, debounce(buildLibCss, WATCH_DEBOUNCE_DELAY));
+  gulp.watch(LIB_CSS_SRC, debounce(
+    gulp.series(buildLibCss), WATCH_DEBOUNCE_DELAY
+  ));
 };

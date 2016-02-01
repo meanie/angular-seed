@@ -18,5 +18,7 @@ const WATCH_DEBOUNCE_DELAY = config.WATCH_DEBOUNCE_DELAY;
  * Export task
  */
 module.exports = function watchAssets() {
-  gulp.watch(ASSETS_SRC, debounce(copyAssets, WATCH_DEBOUNCE_DELAY));
+  gulp.watch(ASSETS_SRC, debounce(
+    gulp.series(copyAssets), WATCH_DEBOUNCE_DELAY
+  ));
 };

@@ -18,5 +18,7 @@ const WATCH_DEBOUNCE_DELAY = config.WATCH_DEBOUNCE_DELAY;
  * Export task
  */
 module.exports = function watchLibJs() {
-  gulp.watch(LIB_JS_SRC, debounce(buildLibJs, WATCH_DEBOUNCE_DELAY));
+  gulp.watch(LIB_JS_SRC, debounce(
+    gulp.series(buildLibJs), WATCH_DEBOUNCE_DELAY
+  ));
 };

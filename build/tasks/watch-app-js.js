@@ -29,9 +29,9 @@ module.exports = gulp.parallel(watchAppCode, watchAppTests);
  */
 function watchAppCode() {
   let files = [].concat(APP_JS_SRC, APP_HTML_SRC);
-  gulp.watch(files, debounce(gulp.series(
-    lint, buildAppJs, buildIndex
-  ), WATCH_DEBOUNCE_DELAY));
+  gulp.watch(files, debounce(
+    gulp.series(lint, buildAppJs, buildIndex), WATCH_DEBOUNCE_DELAY
+  ));
 }
 
 /**
