@@ -11,14 +11,14 @@ let config = require('../config');
 /**
  * Configuration
  */
-const INDEX_SRC = config.INDEX_SRC;
+const INDEX_HTML_SRC = config.INDEX_HTML_SRC;
 const WATCH_DEBOUNCE_DELAY = config.WATCH_DEBOUNCE_DELAY;
 
 /**
  * Export task
  */
 module.exports = function watchIndex() {
-  gulp.watch(INDEX_SRC, debounce(
+  gulp.watch(INDEX_HTML_SRC, debounce(
     gulp.series(buildIndex), WATCH_DEBOUNCE_DELAY
   ));
 };
