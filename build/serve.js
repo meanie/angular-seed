@@ -5,6 +5,8 @@
  */
 let path = require('path');
 let log = require('connect-logger');
+let Rx = require('rx');
+let chokidar = require('chokidar');
 let sync = require('browser-sync').create();
 let serveStatic = require('serve-static');
 let config = require('./config');
@@ -48,10 +50,26 @@ sync.init({
       staticMiddleware,
       spaMiddleware
     ]
-  },
-  files: [
-    `${BASE_DIR}/**/*`
-  ],
-  reloadDebounce: 2000,
-  reloadDelay: 2000
+  }
 });
+
+/**
+ * Create a stream of file-change events
+ */
+Rx.Observable.create(observer => {
+  let watcher = chokidar
+    .watch([`${BASE_DIR}/**/*`], {ignoreInitial: true})
+    .on('all', (event, file) => {
+      observer.onNext({event, file});
+    });
+  return function() {
+    watcher.close();
+  };
+})
+  .debounce(2000)
+  .filter(x => {
+    return (x.event === 'add' || x.event === 'change');
+  })
+  .subscribe(() => {
+    sync.reload();
+  });
