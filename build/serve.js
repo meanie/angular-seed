@@ -67,9 +67,7 @@ Rx.Observable.create(observer => {
   };
 })
   .debounce(2000)
-  .filter(x => {
-    return (x.event === 'add' || x.event === 'change');
-  })
+  .filter(x => (x.event === 'add' || x.event === 'change'))
   .subscribe(() => {
     sync.reload();
   });
