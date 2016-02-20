@@ -40,21 +40,18 @@ module.exports = function buildAppJs() {
     templatesModuleStream()
   );
 
-  //Annotate and wrap with IIFE
-  stream = stream
-    .pipe(ngAnnotate())
-    .pipe(wrapper(angularWrapper()));
-
   //Bundling?
   if (BUNDLE_JS) {
     stream = stream.pipe(sourcemaps.init());
   }
 
-  //Babel the world
+  //Babel, annotate and wrap with IIFE
   stream = stream
     .pipe(babel({
       compact: false
-    }));
+    }))
+    .pipe(ngAnnotate())
+    .pipe(wrapper(angularWrapper()));
 
   //Minify
   if (BUNDLE_JS) {
