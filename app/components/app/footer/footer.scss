@@ -3,10 +3,9 @@
  * App footer
  */
 .app-footer {
-  height: $spacingLarge * 2;
-  padding: $marginParagraph;
+  padding: $spacing;
   p {
-    color: $colorTextMuted;
-    font-size: $fontSizeSmaller;
+    color: #aaa;
+    font-size: $fontSizeSmall;
   }
 }

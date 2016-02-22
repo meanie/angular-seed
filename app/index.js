@@ -5,16 +5,11 @@
 angular.module('App', [
 
   //Angular & 3rd party
-  'ngAnimate',
-  'ngSanitize',
-  'ngMessages',
   'ui.router',
 
-  //Common modules
+  //Meanie modules
   'Api.Service',
   'Log.Service',
-  'Storage.Service',
-  'Analytics.Service',
 
   //Core modules
   'App.Config',
@@ -31,8 +26,8 @@ angular.module('App', [
  * Application configuration
  */
 .config(function(
-  $locationProvider, $urlRouterProvider, $httpProvider, $apiProvider,
-  $storageProvider, $logProvider, $analyticsProvider, Config
+  $locationProvider, $urlRouterProvider, $httpProvider,
+  $apiProvider, $logProvider, Config
 ) {
 
   //Enable HTML 5 mode browsing and set default route
@@ -44,17 +39,8 @@ angular.module('App', [
 
   //Configure API (escape port number)
   $apiProvider.setBaseUrl(Config.API_BASE_URL);
-  $apiProvider.setVerbose(Config.API_VERBOSE);
-  $apiProvider.setEnforceDataFormat(Config.API_ENFORCE_DATA_FORMAT);
+  $apiProvider.setVerbose(Config.ENV === 'dev');
   $apiProvider.setDefaultModel('BaseModel');
-
-  //Configure storage
-  $storageProvider.setPrefix(Config.APP_NAME);
-
-  //Configure analytics
-  $analyticsProvider.setEnabled(
-    Config.ANALYTICS_ENABLED && Config.ANALYTICS_TRACKING_ID
-  );
 
   //Disable all console logging in production
   if (Config.ENV === 'prod') {

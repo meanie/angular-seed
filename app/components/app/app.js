@@ -23,20 +23,8 @@ angular.module('App.Component', [
 /**
  * Run logic
  */
-.run(function($rootScope, $analytics, Config) {
+.run(function($rootScope, Config) {
 
   //Expose configuration in root scope
   $rootScope.Config = Config;
-
-  //Use analytics
-  if ($analytics.isEnabled()) {
-
-    //Create site wide tracker
-    $analytics.create(Config.ANALYTICS_TRACKING_ID);
-
-    //On state changes, track page views
-    $rootScope.$on('$stateChangeSuccess', function() {
-      $analytics.track.pageview();
-    });
-  }
 });

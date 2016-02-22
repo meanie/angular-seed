@@ -30,15 +30,9 @@ let APP_HTML_SRC = ['app/components/**/*.html'];
 //Libraries
 let LIB_JS_SRC = [
   'node_modules/angular/angular.js',
-  'node_modules/angular-animate/angular-animate.js',
-  'node_modules/angular-cookies/angular-cookies.js',
-  'node_modules/angular-messages/angular-messages.js',
-  'node_modules/angular-sanitize/angular-sanitize.js',
   'node_modules/angular-ui-router/release/angular-ui-router.js',
-  'node_modules/meanie-angular-analytics/release/meanie-angular-analytics.js',
   'node_modules/meanie-angular-api/release/meanie-angular-api.js',
   'node_modules/meanie-angular-log/release/meanie-angular-log.js',
-  'node_modules/meanie-angular-storage/release/meanie-angular-storage.js',
   'node_modules/meanie-angular-url/release/meanie-angular-url.js',
   'node_modules/babel-polyfill/dist/polyfill.js'
 ];

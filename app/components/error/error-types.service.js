@@ -5,7 +5,7 @@
 angular.module('App.Error.ErrorTypes.Service', [])
 
 /**
- * Easy access to all error types
+ * Easy access to all error types (define your own here as well)
  */
 .factory('ErrorTypes', function($injector) {
 

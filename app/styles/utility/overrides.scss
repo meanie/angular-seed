@@ -1,17 +1,7 @@
 
 /**
- * Angular cloaking and hidden elements
+ * Angular cloaking
  */
-[ng-cloak], .ng-cloak, .hidden {
+[ng-cloak], .ng-cloak {
 	display: none !important;
-}
-
-/**
- * Utility overrides
- */
-.no-margin {
-	margin: 0 !important;
-}
-.pointer {
-	cursor: pointer !important;
 }

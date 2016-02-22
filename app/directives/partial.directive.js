@@ -9,7 +9,7 @@ angular.module('Shared.Partial.Directive', [])
  */
 .directive('partial', function() {
   return {
-    restrict: 'AE',
+    restrict: 'E',
     scope: false,
     templateUrl(element, attrs) {
       return attrs.url;
