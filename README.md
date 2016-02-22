@@ -12,7 +12,7 @@ This repository contains a seed project for Angular 1 client applications writte
 
 This seed project is built to work together side by side with the [Express seed](https://github.com/meanie/express-seed) project for server side applications. There is also an [Angular 2 seed](https://github.com/meanie/angular2-seed) project using TypeScript.
 
-The build process for this seed project is powered by the Gulp 4 task runner.
+The build process for this seed project is powered by the Gulp 4 task runner and contains a script for running a light dev web server using BrowserSync.
 
 ## Installation
 You can install this seed project either by manually cloning the repository, or by using the [Meanie CLI](https://www.npmjs.com/package/meanie), which will make the process a bit easier.
