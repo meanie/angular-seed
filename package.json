@@ -29,11 +29,11 @@
     "build:prod": "gulp build --env prod",
     "serve": "node build/serve.js --env dev",
     "serve:prod": "node build/serve.js --env prod",
-    "prestart": "npm run build",
-    "start": "parallelshell \"npm run serve\" \"npm run watch\"",
+    "prestart": "npm run build -s",
+    "start": "parallelshell \"npm run serve -s\" \"npm run watch -s\"",
     "dev": "npm start",
     "lint": "gulp lint",
-    "pretest": "npm run lint",
+    "pretest": "npm run lint -s",
     "test": "gulp test",
     "watch": "gulp watch",
     "postversion": "git push && git push --tags"
@@ -49,6 +49,7 @@
     "meanie-angular-api": "^1.4.4",
     "meanie-angular-log": "^1.1.1",
     "meanie-angular-storage": "^1.1.3",
+    "meanie-angular-store": "^1.0.7",
     "meanie-angular-url": "^1.1.1"
   },
   "devDependencies": {

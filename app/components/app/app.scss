@@ -19,16 +19,6 @@
  * App contents
  */
 .app-contents {
-	padding: 3rem 0;
+	padding: $spacingLarge 0;
 	flex: 1;
-}
-
-/**
- * Containers
- */
-.container {
-	margin: 0 auto;
-	width: 100%;
-	max-width: 1024px;
-	padding: 0 2rem;
 }

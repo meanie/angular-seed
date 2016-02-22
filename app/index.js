@@ -21,12 +21,10 @@ angular.module('App', [
   'App.Templates',
   'App.Component',
   'App.Controller',
+  'App.Error',
 
-  //Service modules
-  'Shared.Error',
-
-  //Component modules
-  'App.Home.Component'
+  //App components
+  'App.Home'
 ])
 
 /**
@@ -54,7 +52,9 @@ angular.module('App', [
   $storageProvider.setPrefix(Config.APP_NAME);
 
   //Configure analytics
-  $analyticsProvider.setEnabled(Config.ANALYTICS_ENABLED && Config.ANALYTICS_TRACKING_ID);
+  $analyticsProvider.setEnabled(
+    Config.ANALYTICS_ENABLED && Config.ANALYTICS_TRACKING_ID
+  );
 
   //Disable all console logging in production
   if (Config.ENV === 'prod') {

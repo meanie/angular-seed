@@ -66,8 +66,13 @@ Rx.Observable.create(observer => {
     watcher.close();
   };
 })
-  .debounce(2000)
+  .debounce(1000)
   .filter(x => (x.event === 'add' || x.event === 'change'))
-  .subscribe(() => {
-    sync.reload();
+  .subscribe(x => {
+    if (x.file.match(/\.css$/)) {
+      sync.reload(x.file);
+    }
+    else {
+      sync.reload();
+    }
   });

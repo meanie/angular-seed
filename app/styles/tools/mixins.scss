@@ -1,0 +1,10 @@
+
+/**
+ * Vertically spaced elements
+ */
+@mixin verticallySpaced {
+  margin-bottom: $spacing;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}

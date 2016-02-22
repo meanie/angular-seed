@@ -2,7 +2,7 @@
 /**
  * Module definition and dependencies
  */
-angular.module('App.Home.Component', [
+angular.module('App.Home', [
   'App.Home.Controller'
 ])
 

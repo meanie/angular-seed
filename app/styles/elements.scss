@@ -1,10 +1,5 @@
 
 /**
- * HTML 5 reset
- */
-@import 'common/html5reset';
-
-/**
  * HTML and body
  */
 html {
@@ -20,6 +15,9 @@ body {
 	font-weight: $fontWeightNormal;
 	color: $colorText;
 	background:	$colorWhite;
+  > ui-view {
+    height: 100%;
+  }
 }
 
 /**
@@ -34,7 +32,7 @@ img {
  */
 hr {
 	height: 0;
-	margin: $marginSection 0;
+	margin: $spacing 0;
 	border: 0;
 	border-bottom: 1px solid $colorBorders;
 }
@@ -50,18 +48,12 @@ button, input, select, textarea {
 }
 
 /**
- * Remove outline from focussable elements
+ * Tables
  */
-[tabindex="-1"]:focus {
-  outline: none !important;
+table {
+  border-spacing: 0;
+	@include verticallySpaced;
+	td, th {
+		line-height: $lineHeight;
+	}
 }
-
-/**
- * Common
- */
-@import 'common/utility';
-
-/**
- * UI elements
- */
-@import 'ui/text';

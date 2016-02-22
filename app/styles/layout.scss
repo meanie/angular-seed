@@ -1,0 +1,13 @@
+
+/**
+ * Containers
+ */
+.container {
+	margin: 0 auto;
+  padding: 0 $spacing;
+	width: 100%;
+  @include breakPointLarge {
+    max-width: $breakPointLarge;
+  	padding: 0 $spacingLarge;
+  }
+}

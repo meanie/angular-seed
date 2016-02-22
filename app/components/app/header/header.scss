@@ -1,12 +1,5 @@
 
 /**
- * Variables
- */
-$headerHeight: 5rem;
-$navHeight: $headerHeight;
-$menuButtonPadding: 1.5rem;
-
-/**
  * App header
  */
 .app-header {
@@ -17,11 +10,11 @@ $menuButtonPadding: 1.5rem;
 	 * Navigation
 	 */
 	nav {
-		height: $navHeight;
+		height: $headerHeight;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		margin: 0 (-1 * $menuButtonPadding);
+		margin: 0 (-1 * $spacing);
 		.menu {
 			height: 100%;
 			font-size: 0;
@@ -31,8 +24,8 @@ $menuButtonPadding: 1.5rem;
 				list-style:	none;
 				> a {
 					height: 100%;
-					line-height: $navHeight;
-					padding: 0 $menuButtonPadding;
+					line-height: $headerHeight;
+					padding: 0 $spacing;
 					display: block;
 					font-size: $fontSizeNormal;
 					cursor: pointer;

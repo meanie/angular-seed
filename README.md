@@ -53,7 +53,7 @@ Once installed, you can run the project using:
 npm start
 ```
 
-This will build the app, launch lite-server and watch for file changes and rebuild as needed. Look in the `package.json` for other scripts available to you.
+This will build the app, launch browser sync and watch for file changes and rebuild as needed. Look in the `package.json` for other scripts available to you.
 
 ## Folder structure
 
@@ -81,12 +81,15 @@ The following is an outline of the folder structure of this seed project:
     # Any shared components (like interface elements) reside here.
     └─ shared
 
-  # This folder contains the shared layout for your application.
-  # It's a good place to store all common stylesheets.
-  ├─ layout
+  # Any shared directives can go here.
+  ├─ directives
 
   # Any shared services can go here.
-  └─ services
+  ├─ services
+
+  # This folder contains the base styles for your application.
+  # It's a good place to store all non component specific stylesheets.
+  └─ styles
 
 # This folder contains build configuration as well as all the tasks
 # and utilities required to build your project.

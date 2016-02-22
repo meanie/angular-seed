@@ -1,0 +1,26 @@
+
+/**
+ * Breakpoints
+ */
+$breakPointSmall: 30rem;
+$breakPointMedium: 48rem;
+$breakPointLarge: 64rem;
+
+/**
+ * Breakpoint mixins
+ */
+@mixin breakPointSmall {
+  @media (min-width: $breakPointSmall) {
+    @content;
+  }
+}
+@mixin breakPointMedium {
+  @media (min-width: $breakPointMedium) {
+    @content;
+  }
+}
+@mixin breakPointLarge {
+  @media (min-width: $breakPointLarge) {
+    @content;
+  }
+}

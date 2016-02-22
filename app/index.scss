@@ -1,17 +1,11 @@
 
 /**
- * Load variables and base layout
+ * SCSS index
  */
-@import 'layout/variables';
-@import 'layout/base';
-
-/**
- * Components
- */
-@import 'components/app/app';
-@import 'components/home/home';
-
-/**
- * Overrides
- */
-@import 'layout/common/overrides';
+@import 'styles/variables';
+@import 'styles/tools';
+@import 'styles/reset';
+@import 'styles/elements';
+@import 'styles/layout';
+@import 'styles/components';
+@import 'styles/utility';

@@ -1,14 +1,9 @@
 
 /**
- * Variables
- */
-$heightFooter: 4rem;
-
-/**
  * App footer
  */
 .app-footer {
-  height: $heightFooter;
+  height: $spacingLarge * 2;
   padding: $marginParagraph;
   p {
     color: $colorTextMuted;
