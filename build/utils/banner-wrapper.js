@@ -15,8 +15,10 @@ module.exports = function bannerWrapper() {
 
   //Get date and author
   let today = new Date();
-  let date = today.getDate() + '-' + today.getMonth() + '-' + today.getFullYear();
   let author = pkg.author.name + ' <' + pkg.author.email + '>';
+  let date = today.getDate() + '-' +
+             today.getMonth() + '-' +
+             today.getFullYear();
 
   //Format banner
   let banner =
