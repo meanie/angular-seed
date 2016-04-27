@@ -53,7 +53,6 @@
     "chalk": "^1.1.1",
     "chokidar": "^1.4.2",
     "connect-logger": "0.0.1",
-    "debounce": "^1.0.0",
     "del": "^2.2.0",
     "gulp": "gulpjs/gulp#glob-watcher-2",
     "gulp-angular-templatecache": "^1.8.0",

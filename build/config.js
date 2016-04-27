@@ -53,7 +53,6 @@ let LIB_CSS_DEST = `${BUILD_DEST}/css`;
 let BUNDLE_JS = false;
 let BUNDLE_CSS = false;
 let AUTOPREFIXER_BROWSERS = ['last 2 versions'];
-let WATCH_DEBOUNCE_DELAY = 250;
 
 //Dev server settings
 let REQUEST_LOG_FORMAT = '%date %status %method %url (%time)';
@@ -114,7 +113,6 @@ module.exports = {
   BUNDLE_JS: BUNDLE_JS,
   BUNDLE_CSS: BUNDLE_CSS,
   AUTOPREFIXER_BROWSERS: AUTOPREFIXER_BROWSERS,
-  WATCH_DEBOUNCE_DELAY: WATCH_DEBOUNCE_DELAY,
 
   //Dev server settings
   REQUEST_LOG_FORMAT: REQUEST_LOG_FORMAT
