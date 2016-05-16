@@ -30,6 +30,22 @@ angular.module('App', [
   $apiProvider, $logProvider, Config
 ) {
 
+  //Determine app base url
+  if (!Config.APP_BASE_URL) {
+    let port = Config.APP_PORT || window.location.port;
+    Config.APP_BASE_URL =
+      window.location.protocol + '//' + window.location.hostname +
+      ((port !== 80) ? (':' + port) : '') + (Config.APP_BASE_PATH || '');
+  }
+
+  //Determine API base url
+  if (!Config.API_BASE_URL) {
+    let port = Config.API_PORT || window.location.port;
+    Config.API_BASE_URL =
+      window.location.protocol + '//' + window.location.hostname +
+      ((port !== 80) ? (':' + port) : '') + (Config.API_BASE_PATH || '');
+  }
+
   //Enable HTML 5 mode browsing and set default route
   $locationProvider.html5Mode(true);
   $urlRouterProvider.otherwise('/');
