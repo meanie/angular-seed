@@ -16,13 +16,13 @@ let config = require('./config');
  */
 const PORT = 8080;
 const BASE_DIR = config.BUILD_DEST;
-const REQUEST_LOG_FORMAT = config.REQUEST_LOG_FORMAT;
 
 /**
  * Log middleware
  */
 let logMiddleware = log({
-  format: REQUEST_LOG_FORMAT
+  date: 'HH:mm:ss',
+  format: '[%date] %status %method %url (%time)'
 });
 
 /**
