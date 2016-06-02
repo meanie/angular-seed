@@ -20,9 +20,10 @@ let ASSETS_SRC = ['app/assets/**/*'];
 let CONFIG_SRC = ['config/**/*.yml'];
 let INDEX_HTML_SRC = 'app/index.html';
 let INDEX_CSS_SRC = 'app/index.scss';
+let MANIFEST_SRC = 'app.yaml';
 
 //App
-let APP_JS_SRC = ['app/**/*.js'];
+let APP_JS_SRC = ['app/**/*.js', 'app/components/**/*.js'];
 let APP_TEST_SRC = ['app/**/*.spec.js'];
 let APP_CSS_SRC = ['app/**/*.scss'];
 let APP_HTML_SRC = ['app/components/**/*.html'];
@@ -53,7 +54,6 @@ let LIB_CSS_DEST = `${BUILD_DEST}/css`;
 let BUNDLE_JS = false;
 let BUNDLE_CSS = false;
 let AUTOPREFIXER_BROWSERS = ['last 2 versions'];
-let WATCH_DEBOUNCE_DELAY = 250;
 
 /**
  * Prod environment overrides
@@ -92,6 +92,9 @@ module.exports = {
   APP_CSS_DEST: APP_CSS_DEST,
   LIB_CSS_DEST: LIB_CSS_DEST,
 
+  //Cloud manifest source
+  MANIFEST_SRC: MANIFEST_SRC,
+
   //Sources (JS)
   APP_JS_SRC: APP_JS_SRC,
   LIB_JS_SRC: LIB_JS_SRC,
@@ -110,6 +113,5 @@ module.exports = {
   //Other build settings
   BUNDLE_JS: BUNDLE_JS,
   BUNDLE_CSS: BUNDLE_CSS,
-  AUTOPREFIXER_BROWSERS: AUTOPREFIXER_BROWSERS,
-  WATCH_DEBOUNCE_DELAY: WATCH_DEBOUNCE_DELAY
+  AUTOPREFIXER_BROWSERS: AUTOPREFIXER_BROWSERS
 };
