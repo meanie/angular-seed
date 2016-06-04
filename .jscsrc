@@ -3,8 +3,9 @@
   "fileExtensions": [".js"],
   "maxErrors": 100,
   "excludeFiles": [
-    "node_modules/**",
+    "**/*.html",
     "dist/**",
+    "node_modules/**",
     "app/assets/**"
   ],
   "requireParenthesesAroundIIFE": true,
@@ -21,5 +22,5 @@
   "disallowKeywordsOnNewLine": null,
   "disallowSpacesInsideObjectBrackets": null,
   "disallowImplicitTypeConversion": ["string"],
-  "safeContextKeyword": "self"
+  "safeContextKeyword": ["self", "ctrl"]
 }

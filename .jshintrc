@@ -22,7 +22,8 @@
 		"afterAll": false,
 		"it": false,
 		"inject": false,
-		"expect": false
+		"expect": false,
+    "Promise": true
 	},
 	"latedef": "nofunc",
 	"noarg": true,
