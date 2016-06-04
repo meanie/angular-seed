@@ -10,8 +10,7 @@ APP_TITLE: 'My Application'
 APP_BASE_URL: 'https://my-application.com'
 
 # API settings
-API_VERSION: 1
-API_BASE_URL: 'https://my-application.com/api/v1/'
+API_BASE_URL: 'https://my-application.com/api/'
 
 # Authentication settings
 AUTH_CLIENT_IDENTIFIER: '${pkg.name}'

@@ -9,9 +9,8 @@ APP_VERSION: '${pkg.version}'
 APP_TITLE: 'My Application'
 
 # API settings
-API_VERSION: 1
 API_PORT: 8081
-API_BASE_PATH: '/api/v1'
+API_BASE_PATH: '/api'
 
 # Authentication settings
 AUTH_CLIENT_IDENTIFIER: '${pkg.name}'
