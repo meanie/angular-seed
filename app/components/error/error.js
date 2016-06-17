@@ -10,15 +10,50 @@ angular.module('App.Error', [
 /**
  * Configuration
  */
-.config(function($provide, $httpProvider) {
+.config(function(
+  $provide, $apiProvider, $httpProvider, Config
+) {
+
+  //Error reporting route
+  $apiProvider.registerEndpoint('error', {
+    actions: {
+      report: {
+        method: 'POST'
+      }
+    }
+  });
 
   //Error interceptor
   $httpProvider.interceptors.push('ErrorInterceptor');
 
   //Exception handling
-  $provide.decorator('$exceptionHandler', ['$log', '$delegate',
-    function($log, $delegate) {
+  $provide.decorator('$exceptionHandler', [
+    '$log', '$delegate', '$injector',
+    function($log, $delegate, $injector) {
       return (exception, cause) => {
+
+        //Clean up stack trace
+        let urlRegex = new RegExp(Config.APP_BASE_URL + '/', 'gi');
+        exception.stack = exception.stack.replace(urlRegex, '');
+
+        //Report error
+        if (Config.ERROR_REPORTING_ENABLED) {
+
+          //Get services
+          let $api = $injector.get('$api');
+          let $location = $injector.get('$location');
+
+          //Report error
+          $api.error.report({
+            message: exception.message,
+            stack: exception.stack,
+            context: {
+              clientUrl: $location.absUrl()
+            }
+          });
+        }
+
+        //Delegate to standard handler
         $delegate(exception, cause);
       };
     }]);
@@ -33,7 +68,7 @@ angular.module('App.Error', [
   $rootScope.$on('$stateChangeSuccess', (
     event, toState, toParams
   ) => {
-    $log.log(
+    $log.info(
       'STATE:', toState.name, Object.keys(toParams).length ? toParams : ''
     );
   });

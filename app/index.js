@@ -50,8 +50,9 @@ angular.module('App', [
   $locationProvider.html5Mode(true);
   $urlRouterProvider.otherwise('/');
 
-  //Disable legacy $http promise methods
+  //Disable legacy $http promise methods and set default headers
   $httpProvider.useLegacyPromiseExtensions = false;
+  $httpProvider.defaults.headers.common['X-Version'] = Config.APP_VERSION;
 
   //Configure API (escape port number)
   $apiProvider.setBaseUrl(Config.API_BASE_URL);
