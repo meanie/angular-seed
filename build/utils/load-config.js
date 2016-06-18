@@ -24,9 +24,7 @@ module.exports = function loadConfig() {
   //Build merged config object
   let configEnv = loadEnvConfig(ENV);
   let configLocal = loadEnvConfig('local');
-  let configMerged = Object.assign({}, configEnv, configLocal, {
-    ENV: ENV
-  });
+  let configMerged = Object.assign({}, configEnv, configLocal, {ENV});
 
   //Parse package properties
   let pkg = readPackage();
@@ -66,6 +64,12 @@ function loadEnvConfig(env) {
     return YAML.parse(configYaml);
   }
   catch (e) {
+    if (env === 'development') {
+      return loadEnvConfig('dev');
+    }
+    if (env === 'production') {
+      return loadEnvConfig('prod');
+    }
     if (env !== 'local') {
       console.warn(
         chalk.yellow('Could not load environment configuration file'),
