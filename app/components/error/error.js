@@ -48,6 +48,7 @@ angular.module('App.Error', [
             message: exception.message,
             stack: exception.stack,
             context: {
+              origin: 'client',
               clientUrl: $location.absUrl()
             }
           });
