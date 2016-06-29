@@ -49,7 +49,7 @@ rules:
     - error
     - newIsCap: true
       capIsNew: true
-      properties: true
+      properties: false
   camelcase:
     - error
     - properties: never
