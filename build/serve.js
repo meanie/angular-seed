@@ -4,7 +4,6 @@
  * Dependencies
  */
 let path = require('path');
-let log = require('connect-logger');
 let Rx = require('rx');
 let chokidar = require('chokidar');
 let sync = require('browser-sync').create();
@@ -16,14 +15,6 @@ let config = require('./config');
  */
 const PORT = 8080;
 const BASE_DIR = config.BUILD_DEST;
-
-/**
- * Log middleware
- */
-let logMiddleware = log({
-  date: 'HH:mm:ss',
-  format: '[%date] %status %method %url (%time)'
-});
 
 /**
  * Static middleware
@@ -46,7 +37,6 @@ sync.init({
   server: {
     baseDir: BASE_DIR,
     middleware: [
-      logMiddleware,
       staticMiddleware,
       spaMiddleware
     ]

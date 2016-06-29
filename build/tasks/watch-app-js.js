@@ -4,7 +4,6 @@
  * Dependencies
  */
 let gulp = require('gulp');
-let lint = require('./lint');
 let test = require('./test');
 let buildAppJs = require('./build-app-js');
 let buildIndex = require('./build-index');
@@ -27,12 +26,12 @@ module.exports = gulp.parallel(watchAppCode, watchAppTests);
  */
 function watchAppCode() {
   let files = [].concat(APP_JS_SRC, APP_HTML_SRC);
-  gulp.watch(files, gulp.series(lint, buildAppJs, buildIndex));
+  gulp.watch(files, gulp.series(buildAppJs, buildIndex));
 }
 
 /**
  * Watch client side tests
  */
 function watchAppTests() {
-  gulp.watch(APP_TEST_SRC, gulp.series(lint, test));
+  gulp.watch(APP_TEST_SRC, gulp.series(test));
 }

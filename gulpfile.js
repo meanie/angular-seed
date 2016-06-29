@@ -8,7 +8,6 @@ let gulp = require('gulp');
 /**
  * Tasks
  */
-let lint = require('./build/tasks/lint');
 let test = require('./build/tasks/test');
 let clean = require('./build/tasks/clean');
 let copyAssets = require('./build/tasks/copy-assets');
@@ -49,16 +48,15 @@ gulp.task('watch', gulp.parallel(
 ));
 
 /**
- * Code linting and testing
+ * Test task
  */
-gulp.task('lint', lint);
 gulp.task('test', test);
 
 /**
  * Default task
  */
 gulp.task('default', gulp.series(
-  gulp.parallel('lint', 'test'), 'build', 'watch'
+  'build', 'watch'
 ));
 
 /**

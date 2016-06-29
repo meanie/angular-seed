@@ -111,7 +111,7 @@ Meanie comes with a full set of automated tasks using npm scripts powered by [Gu
 *Note*: Meanie uses Gulp version 4. This version is not officially released yet, but you can install and use this version now by following [these instructions](http://demisx.github.io/gulp4/2015/01/15/install-gulp4.html).
 
 ### Default
-The default build task can be used to lint, test, build, serve and watch your code. This is the main task you'll need for ongoing development:
+The default build task can be used to test, build, serve and watch your code. This is the main task you'll need for ongoing development:
 ```shell
 npm start
 ```
@@ -123,6 +123,8 @@ Lint your code by running:
 ```shell
 npm run lint
 ```
+
+This will use ESLint to lint your code as per the rules defined in `.eslintrc.yaml`.
 
 ### Testing
 Lint your code and run your tests afterwards:
