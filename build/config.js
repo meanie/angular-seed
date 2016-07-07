@@ -20,7 +20,6 @@ let ASSETS_SRC = ['app/assets/**/*'];
 let CONFIG_SRC = ['config/**/*.yml'];
 let INDEX_HTML_SRC = 'app/index.html';
 let INDEX_CSS_SRC = 'app/index.scss';
-let MANIFEST_SRC = 'app.yaml';
 
 //App
 let APP_JS_SRC = ['app/**/*.js', 'app/components/**/*.js'];
@@ -35,10 +34,10 @@ let LIB_JS_SRC = [
   'node_modules/meanie-angular-api/release/meanie-angular-api.js',
   'node_modules/meanie-angular-log/release/meanie-angular-log.js',
   'node_modules/meanie-angular-url/release/meanie-angular-url.js',
-  'node_modules/babel-polyfill/dist/polyfill.js'
+  'node_modules/babel-polyfill/dist/polyfill.js',
 ];
 let LIB_TEST_SRC = [
-  'node_modules/angular-mocks/angular-mocks.js'
+  'node_modules/angular-mocks/angular-mocks.js',
 ];
 let LIB_CSS_SRC = [];
 
@@ -58,13 +57,15 @@ let AUTOPREFIXER_BROWSERS = ['last 2 versions'];
 /**
  * Prod environment overrides
  */
-if (ENV === 'prod') {
+if (ENV === 'production' || ENV === 'staging') {
 
   //Build settings
   BUNDLE_JS = true;
   BUNDLE_CSS = true;
 
-  //Destination paths
+  //Destination folders
+  BUILD_DEST = 'dist/bundled';
+  ASSETS_DEST = BUILD_DEST;
   APP_JS_DEST = `${BUILD_DEST}/bundles`;
   LIB_JS_DEST = `${BUILD_DEST}/bundles`;
   APP_CSS_DEST = `${BUILD_DEST}/bundles`;
@@ -77,41 +78,38 @@ if (ENV === 'prod') {
 module.exports = {
 
   //Environment
-  ENV: ENV,
-  VERSION: VERSION,
+  ENV,
+  VERSION,
 
   //Core paths
-  ROOT_PATH: ROOT_PATH,
-  CONFIG_PATH: CONFIG_PATH,
+  ROOT_PATH,
+  CONFIG_PATH,
 
   //Destination paths
-  BUILD_DEST: BUILD_DEST,
-  ASSETS_DEST: ASSETS_DEST,
-  APP_JS_DEST: APP_JS_DEST,
-  LIB_JS_DEST: LIB_JS_DEST,
-  APP_CSS_DEST: APP_CSS_DEST,
-  LIB_CSS_DEST: LIB_CSS_DEST,
-
-  //Cloud manifest source
-  MANIFEST_SRC: MANIFEST_SRC,
+  BUILD_DEST,
+  ASSETS_DEST,
+  APP_JS_DEST,
+  LIB_JS_DEST,
+  APP_CSS_DEST,
+  LIB_CSS_DEST,
 
   //Sources (JS)
-  APP_JS_SRC: APP_JS_SRC,
-  LIB_JS_SRC: LIB_JS_SRC,
-  ASSETS_SRC: ASSETS_SRC,
-  CONFIG_SRC: CONFIG_SRC,
-  APP_TEST_SRC: APP_TEST_SRC,
-  LIB_TEST_SRC: LIB_TEST_SRC,
+  APP_JS_SRC,
+  LIB_JS_SRC,
+  ASSETS_SRC,
+  CONFIG_SRC,
+  APP_TEST_SRC,
+  LIB_TEST_SRC,
 
   //Sources (CSS & HTML)
-  INDEX_HTML_SRC: INDEX_HTML_SRC,
-  APP_HTML_SRC: APP_HTML_SRC,
-  INDEX_CSS_SRC: INDEX_CSS_SRC,
-  APP_CSS_SRC: APP_CSS_SRC,
-  LIB_CSS_SRC: LIB_CSS_SRC,
+  INDEX_HTML_SRC,
+  APP_HTML_SRC,
+  INDEX_CSS_SRC,
+  APP_CSS_SRC,
+  LIB_CSS_SRC,
 
   //Other build settings
-  BUNDLE_JS: BUNDLE_JS,
-  BUNDLE_CSS: BUNDLE_CSS,
-  AUTOPREFIXER_BROWSERS: AUTOPREFIXER_BROWSERS
+  BUNDLE_JS,
+  BUNDLE_CSS,
+  AUTOPREFIXER_BROWSERS,
 };

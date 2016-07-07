@@ -46,7 +46,7 @@ rules:
     - all
   comma-dangle:
     - error
-    - only-multiline
+    - always-multiline
   new-cap:
     - error
     - newIsCap: true
@@ -112,13 +112,16 @@ rules:
     - always
   newline-per-chained-call:
     - error
-    - ignoreChainWithDepth: 2
+    - ignoreChainWithDepth: 3
   one-var-declaration-per-line:
     - error
     - initializations
   brace-style:
     - error
     - stroustrup
+  no-implicit-coercion:
+    - error
+    - boolean: false
   eol-last: error
   dot-notation: error
   space-infix-ops: error
@@ -134,4 +137,3 @@ rules:
   no-whitespace-before-property: error
   no-lonely-if: error
   no-var: error
-  no-implicit-coercion: error

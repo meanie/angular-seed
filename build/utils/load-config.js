@@ -68,7 +68,7 @@ function loadEnvConfig(env) {
       return loadEnvConfig('dev');
     }
     if (env === 'production') {
-      return loadEnvConfig('prod');
+      return loadEnvConfig('production');
     }
     if (env !== 'local') {
       console.warn(

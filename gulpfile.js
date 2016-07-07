@@ -11,7 +11,6 @@ let gulp = require('gulp');
 let test = require('./build/tasks/test');
 let clean = require('./build/tasks/clean');
 let copyAssets = require('./build/tasks/copy-assets');
-let copyManifest = require('./build/tasks/copy-manifest');
 let buildAppJs = require('./build/tasks/build-app-js');
 let buildLibJs = require('./build/tasks/build-lib-js');
 let buildAppCss = require('./build/tasks/build-app-css');
@@ -31,7 +30,7 @@ let watchConfig = require('./build/tasks/watch-config');
 gulp.task('build', gulp.series(
   clean,
   gulp.parallel(
-    copyAssets, copyManifest,
+    copyAssets,
     buildAppJs, buildAppCss,
     buildLibJs, buildLibCss
   ),

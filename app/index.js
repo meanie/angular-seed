@@ -60,7 +60,7 @@ angular.module('App', [
   $apiProvider.setDefaultModel('BaseModel');
 
   //Disable all console logging in production
-  if (Config.ENV === 'prod') {
+  if (Config.ENV === 'production') {
     $logProvider.disable('all');
   }
 });

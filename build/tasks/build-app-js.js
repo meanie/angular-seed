@@ -50,6 +50,10 @@ module.exports = function buildAppJs() {
     .pipe(babel({
       compact: false
     }))
+    .on('error', error => {
+      console.error(error);
+      this.emit('end');
+    })
     .pipe(ngAnnotate())
     .pipe(wrapper(angularWrapper()));
 

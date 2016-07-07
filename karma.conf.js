@@ -36,6 +36,6 @@ module.exports = function(config) {
     singleRun: false,
 
     //Don't fail on empty test suite
-    failOnEmptyTestSuite: false
+    failOnEmptyTestSuite: false,
   });
 };
