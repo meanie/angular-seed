@@ -10,6 +10,8 @@ angular.module('App', [
   //Meanie modules
   'Api.Service',
   'Log.Service',
+  'KeyCodes.Service',
+  'DuplicateRequestsFilter.Decorator',
 
   //Core modules
   'App.Config',
@@ -19,7 +21,7 @@ angular.module('App', [
   'App.Error',
 
   //App components
-  'App.Home'
+  'App.Home',
 ])
 
 /**

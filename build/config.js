@@ -1,3 +1,4 @@
+/* eslint max-len: 'off' */
 'use strict';
 
 /**
@@ -28,13 +29,16 @@ let APP_CSS_SRC = ['app/**/*.scss'];
 let APP_HTML_SRC = ['app/components/**/*.html'];
 
 //Libraries
+let meanie = 'node_modules/meanie-angular-';
 let LIB_JS_SRC = [
+  'node_modules/babel-polyfill/dist/polyfill.js',
   'node_modules/angular/angular.js',
   'node_modules/angular-ui-router/release/angular-ui-router.js',
-  'node_modules/meanie-angular-api/release/meanie-angular-api.js',
-  'node_modules/meanie-angular-log/release/meanie-angular-log.js',
-  'node_modules/meanie-angular-url/release/meanie-angular-url.js',
-  'node_modules/babel-polyfill/dist/polyfill.js',
+  meanie + 'api/release/meanie-angular-api.js',
+  meanie + 'log/release/meanie-angular-log.js',
+  meanie + 'url/release/meanie-angular-url.js',
+  meanie + 'key-codes/release/meanie-angular-key-codes.js',
+  meanie + 'duplicate-requests-filter/release/meanie-angular-duplicate-requests-filter.js',
 ];
 let LIB_TEST_SRC = [
   'node_modules/angular-mocks/angular-mocks.js',
