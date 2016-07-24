@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "dist/bundled",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

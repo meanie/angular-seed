@@ -138,9 +138,9 @@ Build the application and populate the `dist` folder with compiled javascript, s
 npm run build
 ```
 
-The default build tasks builds your project for the `dev` environment. To build for the `prod` environment, use:
+The default build tasks builds your project for the `dev` environment. To build for the `production` environment, use:
 ```shell
-npm run build:prod
+npm run build:production
 ```
 
 ### Watch
@@ -148,6 +148,14 @@ Watch your files for changes and run lint, test and build tasks as needed:
 ```shell
 npm run watch
 ```
+
+### Deploy
+To deploy to Firebase use:
+```shell
+npm run deploy
+```
+
+Make sure to update your project name in the `package.json` file.
 
 ### Versioning
 Use `npm version` to bump the version numbers in your package file, as well as commit the bump to the repository and tag it with the new version. This process uses [semantic versioning](https://github.com/npm/node-semver).
