@@ -23,20 +23,20 @@
     "node": ">=6.9.4"
   },
   "scripts": {
-    "reinstall": "rimraf node_modules && npm cache clean && npm install",
-    "build": "gulp build --env dev",
-    "build:production": "gulp build --env production",
+    "reinstall": "rimraf node_modules && yarn cache clean && yarn install",
+    "build": "gulp build",
+    "build:dev": "gulp build --env dev",
+    "build:prod": "gulp build --env production",
     "serve": "node build/serve.js --env dev",
-    "prestart": "npm run build -s",
-    "start": "parallelshell \"npm run serve -s\" \"npm run watch -s\"",
-    "dev": "npm start",
+    "OS-X:preserve": "lsof -n -i:8080 | grep LISTEN | awk '{print $2}' | xargs kill -9",
+    "prestart": "yarn run build -s",
+    "start": "parallelshell \"yarn run serve -s\" \"yarn run watch -s\"",
+    "dev": "yarn start",
     "lint": "eslint . --fix",
-    "pretest": "npm run lint -s",
+    "pretest": "yarn run lint -s",
     "test": "gulp test",
     "watch": "gulp watch",
-    "postversion": "git push && git push --tags",
-    "predeploy": "npm run build:production",
-    "deploy": "firebase deploy --project PROJECT_NAME"
+    "postversion": "git commit -a -m \"[bump] $npm_package_version\" && git push"
   },
   "dependencies": {
     "angular": "1.6.1",
