@@ -3,19 +3,12 @@
 /**
  * Dependencies
  */
-let gulp = require('gulp');
-let concat = require('gulp-concat');
-let uglify = require('gulp-uglify');
-let sourcemaps = require('gulp-sourcemaps');
-let packageFilename = require('../utils/package-filename');
-let config = require('../config');
-
-/**
- * Configuration
- */
-const LIB_JS_SRC = config.LIB_JS_SRC;
-const LIB_JS_DEST = config.LIB_JS_DEST;
-const BUNDLE_JS = config.BUNDLE_JS;
+const gulp = require('gulp');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
+const sourcemaps = require('gulp-sourcemaps');
+const packageFilename = require('../utils/package-filename');
+const build = require('../build');
 
 /**
  * Build lib javascript files
@@ -23,10 +16,10 @@ const BUNDLE_JS = config.BUNDLE_JS;
 module.exports = function buildLibJs() {
 
   //Create stream
-  let stream = gulp.src(LIB_JS_SRC);
+  let stream = gulp.src(build.SRC_LIB);
 
   //Bundling?
-  if (BUNDLE_JS) {
+  if (build.BUNDLE_LIB) {
     stream = stream
       .pipe(sourcemaps.init())
         .pipe(concat(packageFilename('lib', '.min.js')))
@@ -35,5 +28,5 @@ module.exports = function buildLibJs() {
   }
 
   //Write to public folder and return
-  return stream.pipe(gulp.dest(LIB_JS_DEST));
+  return stream.pipe(gulp.dest(build.DEST_LIB));
 };

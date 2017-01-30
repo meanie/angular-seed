@@ -1,119 +1,54 @@
-/* eslint max-len: 'off' */
+/* eslint no-console: off */
 'use strict';
 
 /**
  * Dependencies
  */
-let path = require('path');
-let argv = require('yargs').argv;
-let pkg = require('../package.json');
-
-//Environment
-const ENV = argv.env || process.env.NODE_ENV || 'dev';
-const VERSION = pkg.version;
-
-//Paths
-const ROOT_PATH = path.normalize(path.join(__dirname, '..'));
-const CONFIG_PATH = path.join(ROOT_PATH, 'config');
-
-//Source globs
-let ASSETS_SRC = ['app/assets/**/*'];
-let CONFIG_SRC = ['config/**/*.yml'];
-let INDEX_HTML_SRC = 'app/index.html';
-let INDEX_CSS_SRC = 'app/index.scss';
-
-//App
-let APP_JS_SRC = ['app/**/*.js', 'app/components/**/*.js'];
-let APP_TEST_SRC = ['app/**/*.spec.js'];
-let APP_CSS_SRC = ['app/**/*.scss'];
-let APP_HTML_SRC = ['app/components/**/*.html'];
-
-//Libraries
-let meanie = 'node_modules/meanie-angular-';
-let LIB_JS_SRC = [
-  'node_modules/babel-polyfill/dist/polyfill.js',
-  'node_modules/angular/angular.js',
-  'node_modules/angular-ui-router/release/angular-ui-router.js',
-  meanie + 'api/release/meanie-angular-api.js',
-  meanie + 'log/release/meanie-angular-log.js',
-  meanie + 'url/release/meanie-angular-url.js',
-  meanie + 'key-codes/release/meanie-angular-key-codes.js',
-  meanie + 'duplicate-requests-filter/release/meanie-angular-duplicate-requests-filter.js',
-];
-let LIB_TEST_SRC = [
-  'node_modules/angular-mocks/angular-mocks.js',
-];
-let LIB_CSS_SRC = [];
-
-//Destination folders
-let BUILD_DEST = `dist/${ENV}`;
-let ASSETS_DEST = BUILD_DEST;
-let APP_JS_DEST = `${BUILD_DEST}/app`;
-let LIB_JS_DEST = `${BUILD_DEST}/lib`;
-let APP_CSS_DEST = `${BUILD_DEST}/css`;
-let LIB_CSS_DEST = `${BUILD_DEST}/css`;
-
-//Build settings
-let BUNDLE_JS = false;
-let BUNDLE_CSS = false;
-let AUTOPREFIXER_BROWSERS = ['last 2 versions'];
+const path = require('path');
+const chalk = require('chalk');
+const argv = require('yargs').argv;
 
 /**
- * Prod environment overrides
+ * Determine environment and paths
  */
-if (ENV === 'production' || ENV === 'staging') {
+const ENV = argv.env || process.env.APP_ENV || 'dev';
+const BASE_PATH = path.resolve(path.join(__dirname, '..'));
+const CONFIG_PATH = path.join(BASE_PATH, 'config');
 
-  //Build settings
-  BUNDLE_JS = true;
-  BUNDLE_CSS = true;
+/**
+ * Load and merge environment configuration files
+ */
+const envCfg = loadConfig(ENV);
+const localCfg = loadConfig('local');
+const mergedCfg = Object.assign(envCfg, localCfg, {ENV});
 
-  //Destination folders
-  BUILD_DEST = 'dist/bundled';
-  ASSETS_DEST = BUILD_DEST;
-  APP_JS_DEST = `${BUILD_DEST}/bundles`;
-  LIB_JS_DEST = `${BUILD_DEST}/bundles`;
-  APP_CSS_DEST = `${BUILD_DEST}/bundles`;
-  LIB_CSS_DEST = `${BUILD_DEST}/bundles`;
+/**
+ * Export merged config
+ */
+module.exports = mergedCfg;
+
+/**
+ * Helper to load a config file
+ */
+function loadConfig(env) {
+  const configPath = path.join(CONFIG_PATH, env);
+  try {
+    return require(configPath);
+  }
+  catch (e) {
+    if (env === 'development') {
+      return loadConfig('dev');
+    }
+    if (env === 'production') {
+      return loadConfig('prod');
+    }
+    if (env !== 'local') {
+      console.log(
+        chalk.red('Could not load environment configuration file'),
+        chalk.magenta(env + '.js')
+      );
+      process.exit(0);
+    }
+    return {};
+  }
 }
-
-/**
- * Export config object
- */
-module.exports = {
-
-  //Environment
-  ENV,
-  VERSION,
-
-  //Core paths
-  ROOT_PATH,
-  CONFIG_PATH,
-
-  //Destination paths
-  BUILD_DEST,
-  ASSETS_DEST,
-  APP_JS_DEST,
-  LIB_JS_DEST,
-  APP_CSS_DEST,
-  LIB_CSS_DEST,
-
-  //Sources (JS)
-  APP_JS_SRC,
-  LIB_JS_SRC,
-  ASSETS_SRC,
-  CONFIG_SRC,
-  APP_TEST_SRC,
-  LIB_TEST_SRC,
-
-  //Sources (CSS & HTML)
-  INDEX_HTML_SRC,
-  APP_HTML_SRC,
-  INDEX_CSS_SRC,
-  APP_CSS_SRC,
-  LIB_CSS_SRC,
-
-  //Other build settings
-  BUNDLE_JS,
-  BUNDLE_CSS,
-  AUTOPREFIXER_BROWSERS,
-};

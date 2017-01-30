@@ -1,24 +1,14 @@
 
-/**
- * Header and footer
- */
 @import 'header/header';
 @import 'footer/footer';
 
-/**
- * App wrapper
- */
-.app-wrapper {
+.AppWrapper {
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
 	min-height: 100%;
 }
-
-/**
- * App contents
- */
-.app-contents {
+.AppContents {
 	padding: $spacingLarge 0;
 	flex: 1;
 }

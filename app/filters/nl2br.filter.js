@@ -7,7 +7,7 @@ angular.module('Shared.Text.Nl2br.Filter', [])
 /**
  * Filter definitions
  */
-.filter('nl2br', function() {
+.filter('nl2br', () => {
   return function(text) {
     if (typeof text === 'number') {
       return String(text);

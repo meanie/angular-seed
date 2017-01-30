@@ -3,18 +3,13 @@
 /**
  * Dependencies
  */
-let gulp = require('gulp');
-let buildLibJs = require('./build-lib-js');
-let config = require('../config');
-
-/**
- * Configuration
- */
-const LIB_JS_SRC = config.LIB_JS_SRC;
+const gulp = require('gulp');
+const buildLibJs = require('./build-lib-js');
+const build = require('../build');
 
 /**
  * Export task
  */
 module.exports = function watchLibJs() {
-  gulp.watch(LIB_JS_SRC, gulp.series(buildLibJs));
+  gulp.watch(build.SRC_LIB, gulp.series(buildLibJs));
 };

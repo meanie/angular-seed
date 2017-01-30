@@ -3,20 +3,24 @@
  * Module definition and dependencies
  */
 angular.module('App.Home', [
-  'App.Home.Controller'
+  'App.Home.Controller',
 ])
 
 /**
  * Config
  */
-.config(function($stateProvider) {
-
-  //State definition
+.config($stateProvider => {
   $stateProvider.state('home', {
     parent: 'app',
     url: '/',
-    controller: 'HomeCtrl',
-    controllerAs: 'home',
-    templateUrl: 'home/home.html'
+    component: 'homeRoute',
   });
+})
+
+/**
+ * Route component
+ */
+.component('homeRoute', {
+  controller: 'HomeCtrl',
+  templateUrl: 'home/home.html',
 });

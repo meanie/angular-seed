@@ -3,6 +3,9 @@
 <head>
   <base href="/">
   <title><!-- @echo CFG.APP_TITLE --></title>
+  <!-- @if CFG.CSP -->
+  <meta http-equiv="Content-Security-Policy" content="<!-- @echo CFG.CSP -->">
+  <!-- @endif -->
   <meta charset="utf-8">
   <meta name="author" content="">
   <meta name="description" content="">
@@ -14,13 +17,16 @@
   <!-- endinject -->
 </head>
 <body lang="en">
-  <div ui-view class="full-height"></div>
+  <ui-view></ui-view>
   <!-- lib:js -->
   <!-- endinject -->
+  <!-- @if CFG.SENTRY_DSN -->
+  <script src="https://cdn.ravenjs.com/3.9.1/raven.min.js"></script>
+  <!-- @endif -->
   <!-- app:js -->
   <!-- endinject -->
-  <!-- @if ENV='production' -->
-  <script async src='//www.google-analytics.com/analytics.js'></script>
+  <!-- @if CFG.ANALYTICS_ENABLED=true -->
+  <script async src="//www.google-analytics.com/analytics.js"></script>
   <!-- @endif -->
 </body>
 </html>

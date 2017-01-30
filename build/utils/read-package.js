@@ -3,17 +3,19 @@
 /**
  * Dependencies
  */
-let fs = require('fs');
-let path = require('path');
+const fs = require('fs');
+const path = require('path');
 
 /**
  * Location of package.json
  */
-const PACKAGE = path.resolve(path.join(__dirname, '..', '..', 'package.json'));
+const PACKAGE_LOCATION = path.resolve(
+  path.join(__dirname, '..', '..', 'package.json')
+);
 
 /**
  * Get package details (read on demand)
  */
 module.exports = function readPackage() {
-  return JSON.parse(fs.readFileSync(PACKAGE).toString());
+  return JSON.parse(fs.readFileSync(PACKAGE_LOCATION).toString());
 };

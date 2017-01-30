@@ -3,25 +3,20 @@
 /**
  * Dependencies
  */
-let gulp = require('gulp');
-let angularTemplateCache = require('gulp-angular-templatecache');
-let htmlclean = require('gulp-htmlclean');
-let angularModuleName = require('./angular-module-name');
-let config = require('../config');
-
-/**
- * Configuration
- */
-const APP_HTML_SRC = config.APP_HTML_SRC;
+const gulp = require('gulp');
+const angularTemplateCache = require('gulp-angular-templatecache');
+const htmlclean = require('gulp-htmlclean');
+const angularModuleName = require('./angular-module-name');
+const build = require('../build');
 
 /**
  * Templates module stream
  */
 module.exports = function templatesModuleStream() {
-  return gulp.src(APP_HTML_SRC)
+  return gulp.src(build.SRC_HTML)
     .pipe(htmlclean())
     .pipe(angularTemplateCache({
       module: angularModuleName('Templates'),
-      standalone: true
+      standalone: true,
     }));
 };

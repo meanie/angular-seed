@@ -3,18 +3,13 @@
 /**
  * Dependencies
  */
-let gulp = require('gulp');
-let buildAppCss = require('./build-app-css');
-let config = require('../config');
-
-/**
- * Configuration
- */
-const APP_CSS_SRC = config.APP_CSS_SRC;
+const gulp = require('gulp');
+const buildAppCss = require('./build-app-css');
+const build = require('../build');
 
 /**
  * Export task
  */
 module.exports = function watchAppCss() {
-  gulp.watch(APP_CSS_SRC, gulp.series(buildAppCss));
+  gulp.watch(build.SRC_SCSS, gulp.series(buildAppCss));
 };

@@ -13,16 +13,19 @@ env:
   jasmine: true
 globals:
   angular: false
+  Raven: false
 rules:
   linebreak-style:
     - error
     - unix
   max-len:
-    - error
+    - warn
     - code: 80
       tabWidth: 2
       ignoreComments: true
       ignoreUrls: true
+      ignoreTemplateLiterals: true
+      ignoreRegExpLiterals: true
   indent:
     - error
     - 2
@@ -122,6 +125,13 @@ rules:
   no-implicit-coercion:
     - error
     - boolean: false
+  no-multiple-empty-lines:
+    - error
+    - max: 1
+  no-unused-vars:
+    - error
+    - vars: all
+      args: all
   eol-last: error
   dot-notation: error
   space-infix-ops: error
@@ -137,3 +147,4 @@ rules:
   no-whitespace-before-property: error
   no-lonely-if: error
   no-var: error
+  no-console: warn

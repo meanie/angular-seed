@@ -3,81 +3,93 @@
  * Module definition and dependencies
  */
 angular.module('App.Error', [
+  'App.Error.Controller',
+  'App.Error.Errors.Service',
   'App.Error.ErrorTypes.Service',
-  'App.Error.ErrorInterceptor.Service'
+  'App.Error.ErrorInterceptor.Service',
 ])
 
 /**
  * Configuration
  */
 .config(function(
-  $provide, $apiProvider, $httpProvider, Config
+  $provide, $httpProvider, $stateProvider, Config
 ) {
-
-  //Error reporting route
-  $apiProvider.registerEndpoint('error', {
-    actions: {
-      report: {
-        method: 'POST'
-      }
-    }
-  });
 
   //Error interceptor
   $httpProvider.interceptors.push('ErrorInterceptor');
 
+  //Initialize sentry
+  if (Config.SENTRY_DSN && typeof Raven !== 'undefined') {
+    Raven.config(Config.SENTRY_DSN, {
+      release: Config.APP_VERSION,
+      environment: Config.ENV,
+      tags: {origin: Config.SENTRY_ORIGIN, revision: Config.APP_REVISION},
+      ignoreErrors: [],
+    }).install();
+  }
+
   //Exception handling
   $provide.decorator('$exceptionHandler', [
-    '$log', '$delegate', '$injector',
-    function($log, $delegate, $injector) {
-      return (exception, cause) => {
+    '$log', '$injector',
+    function($log, $injector) {
+      return exception => {
 
-        //Clean up stack trace
-        let urlRegex = new RegExp(Config.APP_BASE_URL + '/', 'gi');
-        exception.stack = exception.stack.replace(urlRegex, '');
-
-        //Report error
-        if (Config.ERROR_REPORTING_ENABLED) {
-
-          //Get services
-          let $api = $injector.get('$api');
+        //Process with Sentry
+        if (Config.SENTRY_DSN && typeof Raven !== 'undefined') {
           let $location = $injector.get('$location');
-
-          //Report error
-          $api.error.report({
-            message: exception.message,
-            stack: exception.stack,
-            context: {
-              origin: 'client',
-              clientUrl: $location.absUrl()
-            }
+          Raven.captureException(exception, {
+            extra: {
+              clientUrl: $location.absUrl(),
+            },
           });
         }
 
-        //Delegate to standard handler
-        $delegate(exception, cause);
+        //Log error
+        $log.error(exception);
       };
     }]);
+
+  //State definition
+  $stateProvider.state('error', {
+    parent: 'app',
+    url: '/error/:type',
+    data: {
+      auth: false,
+    },
+    component: 'errorRoute',
+  });
+})
+
+/**
+ * Component definition
+ */
+.component('errorRoute', {
+  templateUrl: 'error/error.html',
+  controller: 'ErrorCtrl',
+  bindings: {
+    transition: '<',
+  },
 })
 
 /**
  * Run logic
  */
-.run(function($rootScope, $log) {
+.run(($transitions, $state, Errors, BaseError) => {
 
-  //Log state changes
-  $rootScope.$on('$stateChangeSuccess', (
-    event, toState, toParams
-  ) => {
-    $log.info(
-      'STATE:', toState.name, Object.keys(toParams).length ? toParams : ''
-    );
+  //Default error handler
+  $state.defaultErrorHandler(error => {
+    if (error instanceof BaseError) {
+      Errors.show(error);
+    }
   });
 
-  //Handle state change errors
-  $rootScope.$on('$stateChangeError', (
-    event, toState, toParams, fromState, fromParams, error
-  ) => {
-    $log.error('Could not transition to state', toState.name + ':', error);
+  //Remember last state
+  $transitions.onSuccess({
+    to(state) {
+      return (state.name !== 'error');
+    },
+  }, transition => {
+    Errors.setLastState(transition.targetState());
   });
 });

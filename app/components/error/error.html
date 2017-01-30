@@ -1,0 +1,12 @@
+<section>
+  <h1>Oops</h1>
+  <p ng-if="$ctrl.type === 'server'">Something went wrong on our end.<br>Please try again or come back in a little while if the problem persists.</p>
+  <p ng-if="$ctrl.type === 'timeout'">That is taking longer than expected.<br>Please double check your internet connection or try again later.</p>
+  <p ng-if="$ctrl.type === 'network'">There seem to be some network issues.<br>Please double check your internet connection and try again.</p>
+  <p ng-if="$ctrl.type === 'page-not-found'">We could not find the page you are looking for.<br>You may have mistyped the address.</p>
+  <p ng-if="$ctrl.type === 'other'">Something went wrong.<br>Please try again or come back in a little while if the problem persists.</p>
+  <p>
+    <a ng-click="$ctrl.goToLastState()" ng-if="$ctrl.hasLastState">Back to the previous page</a>
+    <a ui-sref="home" ng-if="!$ctrl.hasLastState">Back to the home page</a>
+  </p>
+</section>

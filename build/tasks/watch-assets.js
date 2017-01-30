@@ -3,18 +3,14 @@
 /**
  * Dependencies
  */
-let gulp = require('gulp');
-let copyAssets = require('./copy-assets');
-let config = require('../config');
-
-/**
- * Configuration
- */
-const ASSETS_SRC = config.ASSETS_SRC;
+const gulp = require('gulp');
+const copyAssets = require('./copy-assets');
+const updateRedirects = require('./update-redirects');
+const build = require('../build');
 
 /**
  * Export task
  */
 module.exports = function watchAssets() {
-  gulp.watch(ASSETS_SRC, gulp.series(copyAssets));
+  gulp.watch(build.SRC_ASSETS, gulp.series(copyAssets, updateRedirects));
 };

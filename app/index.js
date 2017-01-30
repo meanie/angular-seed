@@ -9,60 +9,28 @@ angular.module('App', [
 
   //Meanie modules
   'Api.Service',
-  'Log.Service',
-  'KeyCodes.Service',
+  'Analytics.Service',
+  'Convert.Service',
   'DuplicateRequestsFilter.Decorator',
+  'FormControls.Component',
+  'KeyCodes.Service',
+  'Log.Service',
+  'Storage.Service',
+  'Store.Service',
 
   //Core modules
   'App.Config',
   'App.Templates',
   'App.Component',
-  'App.Controller',
+  'App.Auth',
   'App.Error',
 
   //App components
   'App.Home',
-])
 
-/**
- * Application configuration
- */
-.config(function(
-  $locationProvider, $urlRouterProvider, $httpProvider,
-  $apiProvider, $logProvider, Config
-) {
+  //Shared services
+  'Shared.Moment.Service',
 
-  //Determine app base url
-  if (!Config.APP_BASE_URL) {
-    let port = Config.APP_PORT || window.location.port;
-    Config.APP_BASE_URL =
-      window.location.protocol + '//' + window.location.hostname +
-      ((port !== 80) ? (':' + port) : '') + (Config.APP_BASE_PATH || '');
-  }
-
-  //Determine API base url
-  if (!Config.API_BASE_URL) {
-    let port = Config.API_PORT || window.location.port;
-    Config.API_BASE_URL =
-      window.location.protocol + '//' + window.location.hostname +
-      ((port !== 80) ? (':' + port) : '') + (Config.API_BASE_PATH || '');
-  }
-
-  //Enable HTML 5 mode browsing and set default route
-  $locationProvider.html5Mode(true);
-  $urlRouterProvider.otherwise('/');
-
-  //Disable legacy $http promise methods and set default headers
-  $httpProvider.useLegacyPromiseExtensions = false;
-  $httpProvider.defaults.headers.common['X-Version'] = Config.APP_VERSION;
-
-  //Configure API (escape port number)
-  $apiProvider.setBaseUrl(Config.API_BASE_URL);
-  $apiProvider.setVerbose(Config.ENV === 'dev');
-  $apiProvider.setDefaultModel('BaseModel');
-
-  //Disable all console logging in production
-  if (Config.ENV === 'production') {
-    $logProvider.disable('all');
-  }
-});
+  //Shared filters
+  'Shared.Moment.Filter',
+]);

@@ -3,19 +3,14 @@
 /**
  * Dependencies
  */
-let del = require('del');
-let config = require('../config');
-
-/**
- * Configuration
- */
-const BUILD_DEST = config.BUILD_DEST;
+const del = require('del');
+const build = require('../build');
 
 /**
  * Clean the build destination folder
  */
 module.exports = function clean() {
-  return del(BUILD_DEST, {
-    dot: true
+  return del(build.DEST_BUILD, {
+    dot: true,
   });
 };

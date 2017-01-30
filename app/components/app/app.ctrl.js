@@ -9,4 +9,10 @@ angular.module('App.Controller', [])
  */
 .controller('AppCtrl', function() {
 
+  /**
+   * On init
+   */
+  this.$onInit = function() {
+
+  };
 });

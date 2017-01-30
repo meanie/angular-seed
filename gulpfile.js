@@ -1,28 +1,34 @@
+/* eslint no-console: off */
 'use strict';
 
 /**
  * Dependencies
  */
-let gulp = require('gulp');
+const gulp = require('gulp');
+const chalk = require('chalk');
+const config = require('./build/config');
 
 /**
  * Tasks
  */
-let test = require('./build/tasks/test');
-let clean = require('./build/tasks/clean');
-let copyAssets = require('./build/tasks/copy-assets');
-let buildAppJs = require('./build/tasks/build-app-js');
-let buildLibJs = require('./build/tasks/build-lib-js');
-let buildAppCss = require('./build/tasks/build-app-css');
-let buildLibCss = require('./build/tasks/build-lib-css');
-let buildIndex = require('./build/tasks/build-index');
-let watchAppJs = require('./build/tasks/watch-app-js');
-let watchLibJs = require('./build/tasks/watch-lib-js');
-let watchAppCss = require('./build/tasks/watch-app-css');
-let watchLibCss = require('./build/tasks/watch-lib-css');
-let watchIndex = require('./build/tasks/watch-index');
-let watchAssets = require('./build/tasks/watch-assets');
-let watchConfig = require('./build/tasks/watch-config');
+const test = require('./build/tasks/test');
+const clean = require('./build/tasks/clean');
+const copyAssets = require('./build/tasks/copy-assets');
+const buildAppJs = require('./build/tasks/build-app-js');
+const buildLibJs = require('./build/tasks/build-lib-js');
+const buildAppCss = require('./build/tasks/build-app-css');
+const buildConfig = require('./build/tasks/build-config');
+const buildIndex = require('./build/tasks/build-index');
+const watchAppJs = require('./build/tasks/watch-app-js');
+const watchLibJs = require('./build/tasks/watch-lib-js');
+const watchAppCss = require('./build/tasks/watch-app-css');
+const watchIndex = require('./build/tasks/watch-index');
+const watchAssets = require('./build/tasks/watch-assets');
+const watchConfig = require('./build/tasks/watch-config');
+const updateRedirects = require('./build/tasks/update-redirects');
+
+//Log
+console.log('Running in', chalk.magenta(config.ENV), 'environment');
 
 /**
  * Build the application
@@ -30,9 +36,11 @@ let watchConfig = require('./build/tasks/watch-config');
 gulp.task('build', gulp.series(
   clean,
   gulp.parallel(
-    copyAssets,
-    buildAppJs, buildAppCss,
-    buildLibJs, buildLibCss
+    gulp.series(copyAssets, updateRedirects),
+    buildConfig,
+    buildAppJs,
+    buildAppCss,
+    buildLibJs
   ),
   buildIndex
 ));
@@ -42,12 +50,12 @@ gulp.task('build', gulp.series(
  */
 gulp.task('watch', gulp.parallel(
   watchAppJs, watchLibJs,
-  watchAppCss, watchLibCss,
+  watchAppCss,
   watchIndex, watchAssets, watchConfig
 ));
 
 /**
- * Test task
+ * Testing
  */
 gulp.task('test', test);
 
@@ -55,7 +63,7 @@ gulp.task('test', test);
  * Default task
  */
 gulp.task('default', gulp.series(
-  'build', 'watch'
+  'test', 'build', 'watch'
 ));
 
 /**

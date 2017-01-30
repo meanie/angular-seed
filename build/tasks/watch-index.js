@@ -3,18 +3,13 @@
 /**
  * Dependencies
  */
-let gulp = require('gulp');
-let buildIndex = require('./build-index');
-let config = require('../config');
-
-/**
- * Configuration
- */
-const INDEX_HTML_SRC = config.INDEX_HTML_SRC;
+const gulp = require('gulp');
+const buildIndex = require('./build-index');
+const build = require('../build');
 
 /**
  * Export task
  */
 module.exports = function watchIndex() {
-  gulp.watch(INDEX_HTML_SRC, gulp.series(buildIndex));
+  gulp.watch(build.SRC_INDEX_HTML, gulp.series(buildIndex));
 };

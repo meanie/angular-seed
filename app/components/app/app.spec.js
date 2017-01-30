@@ -2,10 +2,10 @@
 /**
  * Specifications
  */
-describe('Client app', function() {
+describe('App', function() {
 
   /**
-   * Main test
+   * Smoke test
    */
   it('should run this test', function() {
     expect(true).toBe(true);

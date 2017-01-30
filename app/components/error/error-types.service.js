@@ -5,28 +5,6 @@
 angular.module('App.Error.ErrorTypes.Service', [])
 
 /**
- * Easy access to all error types (define your own here as well)
- */
-.factory('ErrorTypes', function($injector) {
-
-  //Types to expose
-  let types = [
-    'BaseError', 'ResponseError', 'ServerError', 'ClientError',
-    'NotAuthenticatedError', 'NotAuthorizedError', 'NotFoundError',
-    'ValidationError', 'TimeoutError'
-  ];
-
-  //Error types hash
-  let errors = {};
-  types.forEach(type => {
-    errors[type] = $injector.get(type);
-  });
-
-  //Return
-  return errors;
-})
-
-/**
  * Base error
  */
 .factory('BaseError', function() {
@@ -121,6 +99,19 @@ angular.module('App.Error.ErrorTypes.Service', [])
 })
 
 /**
+ * Network error
+ */
+.factory('NetworkError', function(ResponseError) {
+  function NetworkError(response) {
+    ResponseError.call(this, response);
+  }
+  NetworkError.prototype = Object.create(ResponseError.prototype);
+  NetworkError.prototype.constructor = NetworkError;
+  NetworkError.prototype.name = 'NetworkError';
+  return NetworkError;
+})
+
+/**
  * Not authenticated error
  */
 .factory('NotAuthenticatedError', function(ClientError) {
@@ -170,6 +161,19 @@ angular.module('App.Error.ErrorTypes.Service', [])
   NotFoundError.prototype.constructor = NotFoundError;
   NotFoundError.prototype.name = 'NotFoundError';
   return NotFoundError;
+})
+
+/**
+ * Exists error
+ */
+.factory('ExistsError', function(ClientError) {
+  function ExistsError(response) {
+    ClientError.call(this, response);
+  }
+  ExistsError.prototype = Object.create(ClientError.prototype);
+  ExistsError.prototype.constructor = ExistsError;
+  ExistsError.prototype.name = 'ExistsError';
+  return ExistsError;
 })
 
 /**

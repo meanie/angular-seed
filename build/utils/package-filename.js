@@ -3,7 +3,7 @@
 /**
  * Dependencies
  */
-let readPackage = require('./read-package');
+const readPackage = require('./read-package');
 
 /**
  * Get package file name

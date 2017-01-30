@@ -1,10 +1,6 @@
-# Common
 .DS_Store
-Thumbs.db
-*.sublime-*
-node_modules
 *.log
-
-# App
-config/local.*
+node_modules
 dist
+config/local.*
+yarn.lock

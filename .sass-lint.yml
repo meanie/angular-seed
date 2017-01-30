@@ -1,0 +1,22 @@
+options:
+  merge-default-rules: false
+files:
+  include: '**/*.s+(a|c)ss'
+rules:
+  extends-before-mixins: 2
+  extends-before-declarations: 2
+  no-warn: 1
+  no-debug: 1
+  no-ids: 2
+  hex-notation:
+    - 2
+    -
+      style: lowercase
+  variable-name-format:
+    - 2
+    -
+      convention: camelcase
+  mixin-name-format:
+    - 2
+    -
+      convention: camelcase

@@ -6,6 +6,6 @@
 module.exports = function angularWrapper() {
   return {
     header: '(function(window, angular, undefined) {\n  \'use strict\';\n',
-    footer: '\n})(window, window.angular);\n'
+    footer: '\n})(window, window.angular);\n',
   };
 };

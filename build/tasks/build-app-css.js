@@ -3,21 +3,21 @@
 /**
  * Dependencies
  */
-let gulp = require('gulp');
-let sass = require('gulp-sass');
-let csso = require('gulp-csso');
-let rename = require('gulp-rename');
-let autoprefixer = require('gulp-autoprefixer');
-let packageFilename = require('../utils/package-filename');
-let config = require('../config');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const csso = require('gulp-csso');
+const rename = require('gulp-rename');
+const autoprefixer = require('gulp-autoprefixer');
+const packageFilename = require('../utils/package-filename');
+const build = require('../build');
 
 /**
- * Configuration
+ * Build configuration
  */
-const INDEX_CSS_SRC = config.INDEX_CSS_SRC;
-const APP_CSS_DEST = config.APP_CSS_DEST;
-const BUNDLE_CSS = config.BUNDLE_CSS;
-const AUTOPREFIXER_BROWSERS = config.AUTOPREFIXER_BROWSERS;
+const SRC_INDEX_SCSS = build.SRC_INDEX_SCSS;
+const DEST_CSS = build.DEST_CSS;
+const BUNDLE_CSS = build.BUNDLE_CSS;
+const AUTOPREFIXER = build.AUTOPREFIXER;
 
 /**
  * Build application SCSS files
@@ -25,11 +25,9 @@ const AUTOPREFIXER_BROWSERS = config.AUTOPREFIXER_BROWSERS;
 module.exports = function buildAppScss() {
 
   //Create stream
-  let stream = gulp.src(INDEX_CSS_SRC)
+  let stream = gulp.src(SRC_INDEX_SCSS)
     .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer({
-       browsers: AUTOPREFIXER_BROWSERS
-     }));
+    .pipe(autoprefixer(AUTOPREFIXER));
 
   //Bundling?
   if (BUNDLE_CSS) {
@@ -39,5 +37,5 @@ module.exports = function buildAppScss() {
   }
 
   //Write to destination folder
-  return stream.pipe(gulp.dest(APP_CSS_DEST));
+  return stream.pipe(gulp.dest(DEST_CSS));
 };

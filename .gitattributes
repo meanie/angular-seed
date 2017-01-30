@@ -4,4 +4,5 @@
 # Binary files
 *.png binary
 *.jpg binary
+*.gif binary
 *.woff binary

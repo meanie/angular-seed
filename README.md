@@ -10,7 +10,7 @@
 
 This repository contains a seed project for Angular 1 client applications written in ES5/ES6. It is part of the [Meanie](https://github.com/meanie/meanie) eco system, which is a collection of boilerplate code and libraries for developing, testing and building javascript applications using the MEAN stack (MongoDB, Express, Angular and Node).
 
-This seed project is built to work together side by side with the [Express seed](https://github.com/meanie/express-seed) project for server side applications. There is also an [Angular 2 seed](https://github.com/meanie/angular2-seed) project using TypeScript.
+This seed project is built to work together side by side with the [Express seed](https://github.com/meanie/express-seed) project for server side applications.
 
 The build process for this seed project is powered by the Gulp 4 task runner and contains a script for running a light dev web server using BrowserSync.
 
@@ -43,6 +43,7 @@ git clone https://github.com/meanie/angular-seed.git .
 rm -rf .git
 
 # Install dependencies
+yarn #or
 npm install
 ```
 
@@ -50,6 +51,7 @@ npm install
 Once installed, you can run the project using:
 
 ```shell
+yarn start #or
 npm start
 ```
 
@@ -195,4 +197,4 @@ Pull requests are welcome! If you would like to contribute to Meanie, please che
 
 (MIT License)
 
-Copyright 2015-2016, [Adam Buczynski](http://adambuczynski.com)
+Copyright 2015-2017, [Adam Reis](http://adam.reis.nz)

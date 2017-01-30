@@ -1,0 +1,2 @@
+/api/*  %API_BASE_URL%/:splat  200
+/*  /index.html  200
