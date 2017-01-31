@@ -10,11 +10,11 @@ angular.module('App.Error.Errors.Service', [])
 .factory('Errors', function(
   ResponseError, NetworkError, ServerError, ClientError,
   NotAuthenticatedError, NotAuthorizedError, NotFoundError,
-  ValidationError, TimeoutError, ExistsError, $injector, $q
+  ValidationError, TimeoutError, ExistsError, $injector
 ) {
 
   //Services
-  let $modal, $state, Auth, lastState, lastError;
+  let $state, Auth, lastState, lastError;
 
   /**
    * Error store interface
@@ -56,27 +56,11 @@ angular.module('App.Error.Errors.Service', [])
 
       //Get services
       $state = $state || $injector.get('$state');
-      $modal = $modal || $injector.get('$modal');
       Auth = Auth || $injector.get('Auth');
 
       //Remember last error and get error type
       this.setLastError(error);
       const type = this.getType(error);
-
-      //Open modal if applicable
-      if ($state.current.name && $state.current.data
-        && $state.current.data.auth && Auth.isAuthenticated()) {
-
-        //Only open if not already open
-        if ($modal.isOpen('error')) {
-          return $q.resolve();
-        }
-
-        //Open modal
-        return $modal.open('error', {
-          locals: {model: {type, error}},
-        });
-      }
 
       //Get error type and go to error state
       return $state.go('error', {type});
