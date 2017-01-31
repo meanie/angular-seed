@@ -9,9 +9,7 @@ angular.module('App.Auth.Token.Model', [
 /**
  * Config
  */
-.config(function($apiProvider) {
-
-  //Register token endpoint
+.config($apiProvider => {
   $apiProvider.registerEndpoint('auth', {
     url: 'auth',
     actions: {

@@ -12,9 +12,7 @@ angular.module('App.Error', [
 /**
  * Configuration
  */
-.config(function(
-  $provide, $httpProvider, $stateProvider, Config
-) {
+.config(($provide, $httpProvider, $stateProvider, Config) => {
 
   //Error interceptor
   $httpProvider.interceptors.push('ErrorInterceptor');
