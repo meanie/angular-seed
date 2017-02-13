@@ -2,6 +2,7 @@
 
 # Angular seed project
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e7834f33fcb24ee9a390a3872794d078)](https://www.codacy.com/app/adamreisnz/angular-seed?utm_source=github.com&utm_medium=referral&utm_content=meanie/angular-seed&utm_campaign=badger)
 [![github release](https://img.shields.io/github/release/meanie/angular-seed.svg)](https://github.com/meanie/angular-seed/releases)
 [![node dependencies](https://david-dm.org/meanie/angular-seed.svg)](https://david-dm.org/meanie/angular-seed)
 [![github issues](https://img.shields.io/github/issues/meanie/angular-seed.svg)](https://github.com/meanie/angular-seed/issues)
